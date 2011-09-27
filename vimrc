@@ -181,7 +181,7 @@ map \ft :%s/	/  /g<CR>
 
 set et
 
-let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 
 autocmd FileType * set relativenumber
 
