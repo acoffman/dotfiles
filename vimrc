@@ -6,6 +6,9 @@ set nocompatible
 
 set modelines=0
 
+runtime macros/matchit.vim
+
+
 
 " have command-line completion <Tab> (for filenames, help topics, option names)
 " first list the available options and complete the longest common part, then
@@ -186,10 +189,10 @@ let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 autocmd FileType * set relativenumber
 
 "split stuff
-nmap <silent> <leader>k :wincmd k<CR>
-nmap <silent> <leader>j :wincmd j<CR>
-nmap <silent> <leader>h :wincmd h<CR>
-nmap <silent> <leader>l :wincmd l<CR>
+nmap <silent> <C-k> :wincmd k<CR>
+nmap <silent> <C-j> :wincmd j<CR>
+nmap <silent> <C-h> :wincmd h<CR>
+nmap <silent> <C-l> :wincmd l<CR>
 nmap <silent> <C-n> :vsplit <CR>
 
 "toggle spellcheck

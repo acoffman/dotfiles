@@ -31,3 +31,9 @@
 [submodule "ack"]
 	path = ack
 	url = https://github.com/mileszs/ack.vim.git
+[submodule "vim-textobj-user"]
+	path = vim-textobj-user
+	url = https://github.com/kana/vim-textobj-user.git
+[submodule "ruby-block"]
+	path = ruby-block
+	url = https://github.com/nelstrom/vim-textobj-rubyblock.git
