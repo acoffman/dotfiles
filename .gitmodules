@@ -43,3 +43,6 @@
 [submodule "vim-markdown"]
 	path = vim-markdown
 	url = https://github.com/plasticboy/vim-markdown.git
+[submodule "vim-rails"]
+	path = vim-rails
+	url = https://github.com/tpope/vim-rails.git
