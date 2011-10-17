@@ -67,6 +67,8 @@ let g:tagbar_usearrows = 1
 map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
 map <C-\> :tnext<CR>
 map <Leader>t :TagbarToggle<CR>
+set tags=./tags;
+
 
 inoremap jj <ESC>
 
