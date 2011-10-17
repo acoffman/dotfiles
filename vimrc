@@ -8,7 +8,7 @@ set modelines=0
 
 runtime macros/matchit.vim
 
-
+set noswapfile
 
 " have command-line completion <Tab> (for filenames, help topics, option names)
 " first list the available options and complete the longest common part, then
