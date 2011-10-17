@@ -37,3 +37,6 @@
 [submodule "ruby-block"]
 	path = ruby-block
 	url = https://github.com/nelstrom/vim-textobj-rubyblock.git
+[submodule "argtextobj"]
+	path = argtextobj
+	url = https://github.com/vim-scripts/argtextobj.vim.git
