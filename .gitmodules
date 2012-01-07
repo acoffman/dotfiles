@@ -46,3 +46,6 @@
 [submodule "vim-rails"]
 	path = vim-rails
 	url = https://github.com/tpope/vim-rails.git
+[submodule "smartusline"]
+	path = smartusline
+	url = https://github.com/molok/vim-smartusline.git
