@@ -181,6 +181,7 @@ set statusline=%<%f%h%m%r%=%{strftime(\"%I:%M:%S\ \%p,\ %a\ %b\ %d,\ %Y\")}\ \ \
 "bigger font so i don't go blind
 set guifont=Inconsolata:h16
 
+
 "replace all tabs with 2 spaces
 map \ft :%s/	/  /g<CR> 
 
