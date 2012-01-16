@@ -179,7 +179,8 @@ set guioptions-=r
 "better status line
 set statusline=%<%f%h%m%r%=%{strftime(\"%I:%M:%S\ \%p,\ %a\ %b\ %d,\ %Y\")}\ \ \|\ \ %{&ff}\ %l,%c%V\ %P\ \ 
 "bigger font so i don't go blind
-set guifont=Inconsolata:h16
+set guifont=Inconsolata-dz\ for\ Powerline:h13
+let g:Powerline_symbols = 'fancy'
 
 
 "replace all tabs with 2 spaces
@@ -197,6 +198,7 @@ nmap <silent> <C-j> :wincmd j<CR>
 nmap <silent> <C-h> :wincmd h<CR>
 nmap <silent> <C-l> :wincmd l<CR>
 nmap <silent> <C-n> :vsplit <CR>
+
 
 "toggle spellcheck
 inoremap <silent> <leader>s <c -O>:call SpellToggle()<cr>

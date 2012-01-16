@@ -46,3 +46,6 @@
 [submodule "vim-rails"]
 	path = vim-rails
 	url = https://github.com/tpope/vim-rails.git
+[submodule "vim-powerline"]
+	path = vim-powerline
+	url = https://github.com/Lokaltog/vim-powerline.git
