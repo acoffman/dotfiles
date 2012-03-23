@@ -5,6 +5,13 @@ filetype plugin indent on
 set nocompatible
 
 set modelines=0
+set mouse=a
+set clipboard=unnamed
+
+"hide search highlighting on enter
+nnoremap <silent> <CR> :noh<CR><CR>
+"close buffer
+nnoremap <silent> <leader>q :bd<CR>
 
 runtime macros/matchit.vim
 
@@ -15,9 +22,9 @@ set noswapfile
 " have further <Tab>s cycle through the possibilities:
 set wildmode=list:longest,full
 
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set expandtab
 " Display extra whitespace
 set list listchars=tab:»·,trail:·
@@ -71,9 +78,6 @@ set tags=./tags;
 
 
 inoremap jj <ESC>
-
-"Remove highlights when I hit esc
-nnoremap <silent> <ESC> :nohl<cr>
 
 " * Text Formatting -- General
 
@@ -146,7 +150,7 @@ set laststatus=2
 autocmd BufNewFile,BufRead *.rhtml set filetype=eruby
 autocmd BufNewFile,BufRead *.erb* set filetype=eruby
 autocmd BufNewFile,BufRead *.rake set filetype=ruby
-augroup END
+autocmd BufNewFile,BufRead *.pm set filetype=perl
 
 syntax on
 
@@ -180,15 +184,13 @@ set guioptions-=r
 set statusline=%<%f%h%m%r%=%{strftime(\"%I:%M:%S\ \%p,\ %a\ %b\ %d,\ %Y\")}\ \ \|\ \ %{&ff}\ %l,%c%V\ %P\ \ 
 "bigger font so i don't go blind
 set guifont=Inconsolata-dz\ for\ Powerline:h13
-let g:Powerline_symbols = 'fancy'
 
 
-"replace all tabs with 2 spaces
-map \ft :%s/	/  /g<CR> 
+"replace all tabs with 4 spaces
+map \ft :%s/	/    /g<CR> 
 
 set et
 
-let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 
 autocmd FileType * set relativenumber
 

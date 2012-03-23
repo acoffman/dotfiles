@@ -10,15 +10,9 @@
 [submodule "surround"]
 	path = surround
 	url = https://github.com/tpope/vim-surround.git
-[submodule "supertab"]
-	path = supertab
-	url = https://github.com/ervandew/supertab.git
 [submodule "solarized"]
 	path = solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
-[submodule "peepopen"]
-	path = peepopen
-	url = https://github.com/shemerey/vim-peepopen.git
 [submodule "jade"]
 	path = jade
 	url = https://github.com/digitaltoad/vim-jade.git
@@ -46,6 +40,6 @@
 [submodule "vim-rails"]
 	path = vim-rails
 	url = https://github.com/tpope/vim-rails.git
-[submodule "vim-powerline"]
-	path = vim-powerline
-	url = https://github.com/Lokaltog/vim-powerline.git
+[submodule "lusty"]
+	path = lusty
+	url = https://github.com/sjbach/lusty.git
