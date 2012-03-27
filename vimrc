@@ -164,11 +164,8 @@ set binary noeol
 set showmatch
 
 
-win 150 60
-
 set background=dark
 let g:solarized_termtrans=1
-let g:solarized_termcolors=256
 let g:solarized_contrast="high"
 let g:solarized_visibility="high"
 colorscheme solarized
@@ -183,7 +180,7 @@ set guioptions-=r
 "better status line
 set statusline=%<%f%h%m%r%=%{strftime(\"%I:%M:%S\ \%p,\ %a\ %b\ %d,\ %Y\")}\ \ \|\ \ %{&ff}\ %l,%c%V\ %P\ \ 
 "bigger font so i don't go blind
-set guifont=Inconsolata-dz\ for\ Powerline:h13
+set guifont=Inconsolata:h13
 
 
 "replace all tabs with 4 spaces
