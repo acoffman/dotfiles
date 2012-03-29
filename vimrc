@@ -65,9 +65,8 @@ nnoremap ; :
 
 nnoremap <leader>s :set 
 nnoremap <leader>a :Ack<space>
-
+nnoremap <leader>q :bd<CR>
 nnoremap <leader>v V`]
-
 
 " CTags - tagbar
 let g:tagbar_usearrows = 1
