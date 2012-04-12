@@ -47,7 +47,6 @@ let mapleader = ","
 
 set ignorecase
 set smartcase
-set gdefault
 set incsearch
 set showmatch
 set hlsearch
