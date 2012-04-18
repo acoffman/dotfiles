@@ -43,3 +43,6 @@
 [submodule "lusty"]
 	path = lusty
 	url = https://github.com/sjbach/lusty.git
+[submodule "clam.vim"]
+	path = clam.vim
+	url = https://github.com/sjl/clam.vim.git
