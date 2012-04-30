@@ -171,6 +171,7 @@ colorscheme solarized
 
 set wildmenu
 
+let g:LustyJugglerSuppressRubyWarning = 1
 
 "Remove the toolbar
 set guioptions-=T
