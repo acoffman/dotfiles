@@ -47,7 +47,6 @@ let mapleader = ","
 
 set ignorecase
 set smartcase
-set gdefault
 set incsearch
 set showmatch
 set hlsearch
@@ -65,9 +64,8 @@ nnoremap ; :
 
 nnoremap <leader>s :set 
 nnoremap <leader>a :Ack<space>
-
+nnoremap <leader>q :bd<CR>
 nnoremap <leader>v V`]
-
 
 " CTags - tagbar
 let g:tagbar_usearrows = 1
@@ -151,6 +149,7 @@ autocmd BufNewFile,BufRead *.rhtml set filetype=eruby
 autocmd BufNewFile,BufRead *.erb* set filetype=eruby
 autocmd BufNewFile,BufRead *.rake set filetype=ruby
 autocmd BufNewFile,BufRead *.pm set filetype=perl
+autocmd BufNewFile,BufRead *.t set filetype=perl
 
 syntax on
 
@@ -172,6 +171,7 @@ colorscheme solarized
 
 set wildmenu
 
+let g:LustyJugglerSuppressRubyWarning = 1
 
 "Remove the toolbar
 set guioptions-=T
@@ -188,8 +188,8 @@ map \ft :%s/	/    /g<CR>
 
 set et
 
-
-autocmd FileType * set relativenumber
+"ack on ubuntu
+let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
 "split stuff
 nmap <silent> <C-k> :wincmd k<CR>

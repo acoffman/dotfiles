@@ -13,9 +13,6 @@
 [submodule "solarized"]
 	path = solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
-[submodule "jade"]
-	path = jade
-	url = https://github.com/digitaltoad/vim-jade.git
 [submodule "indent_levels"]
 	path = indent_levels
 	url = https://github.com/nathanaelkane/vim-indent-guides
@@ -43,3 +40,6 @@
 [submodule "lusty"]
 	path = lusty
 	url = https://github.com/sjbach/lusty.git
+[submodule "clam.vim"]
+	path = clam.vim
+	url = https://github.com/sjl/clam.vim.git
