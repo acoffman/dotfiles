@@ -4,18 +4,9 @@
 [submodule "tagbar"]
 	path = tagbar
 	url = https://github.com/majutsushi/tagbar.git
-[submodule "delimitmate"]
-	path = delimitmate
-	url = https://github.com/Raimondi/delimitMate.git
-[submodule "surround"]
-	path = surround
-	url = https://github.com/tpope/vim-surround.git
 [submodule "solarized"]
 	path = solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
-[submodule "indent_levels"]
-	path = indent_levels
-	url = https://github.com/nathanaelkane/vim-indent-guides
 [submodule "commenter"]
 	path = commenter
 	url = https://github.com/vim-scripts/The-NERD-Commenter.git
