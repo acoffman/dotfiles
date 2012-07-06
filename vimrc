@@ -5,7 +5,6 @@ filetype plugin indent on
 set nocompatible
 
 set modelines=0
-set mouse=a
 set clipboard=unnamed
 
 "hide search highlighting on enter
@@ -163,11 +162,7 @@ set binary noeol
 set showmatch
 
 
-set background=dark
-let g:solarized_termtrans=1
-let g:solarized_contrast="high"
-let g:solarized_visibility="high"
-colorscheme solarized
+colorscheme getafe
 
 set wildmenu
 
@@ -180,7 +175,7 @@ set guioptions-=r
 "better status line
 set statusline=%<%f%h%m%r%=%{strftime(\"%I:%M:%S\ \%p,\ %a\ %b\ %d,\ %Y\")}\ \ \|\ \ %{&ff}\ %l,%c%V\ %P\ \ 
 "bigger font so i don't go blind
-set guifont=Inconsolata:h13
+set guifont=Monaco:h13
 
 
 "replace all tabs with 4 spaces
@@ -189,7 +184,7 @@ map \ft :%s/	/    /g<CR>
 set et
 
 "ack on ubuntu
-let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+let g:ackprg="ack -H --nocolor --nogroup --column"
 
 "split stuff
 nmap <silent> <C-k> :wincmd k<CR>
