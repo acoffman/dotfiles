@@ -1,6 +1,7 @@
 filetype off
 call pathogen#runtime_append_all_bundles()
 filetype plugin indent on
+set t_Co=256
 
 set nocompatible
 
@@ -175,7 +176,7 @@ set guioptions-=r
 "better status line
 set statusline=%<%f%h%m%r%=%{strftime(\"%I:%M:%S\ \%p,\ %a\ %b\ %d,\ %Y\")}\ \ \|\ \ %{&ff}\ %l,%c%V\ %P\ \ 
 "bigger font so i don't go blind
-set guifont=Monaco:h13
+set guifont=Monaco:h12
 
 
 "replace all tabs with 4 spaces
