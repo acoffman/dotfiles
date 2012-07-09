@@ -194,6 +194,8 @@ nmap <silent> <C-h> :wincmd h<CR>
 nmap <silent> <C-l> :wincmd l<CR>
 nmap <silent> <C-n> :vsplit <CR>
 
+let g:ctrlp_custom_ignore = '\.git\|\.hg\|\.svn\|vendor/\|log/\|tmp/'
+let g:ctrlp_dotfiles = 0
 
 "toggle spellcheck
 inoremap <silent> <leader>s <c -O>:call SpellToggle()<cr>
