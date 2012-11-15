@@ -8,6 +8,8 @@ set nocompatible
 set modelines=0
 set clipboard=unnamed
 
+set complete=.,b,u,]
+
 "hide search highlighting on enter
 nnoremap <silent> <CR> :noh<CR><CR>
 "close buffer
@@ -178,10 +180,6 @@ set statusline=%<%f%h%m%r%=%{strftime(\"%I:%M:%S\ \%p,\ %a\ %b\ %d,\ %Y\")}\ \ \
 "bigger font so i don't go blind
 set guifont=Monaco:h12
 
-
-"replace all tabs with 4 spaces
-map \ft :%s/	/    /g<CR> 
-
 set et
 
 "ack on ubuntu
@@ -207,3 +205,20 @@ function SpellToggle()
     set spell
   endif
 endfunction
+
+"Tabularize shortcuts
+if exists(":Tabularize")
+    nmap <leader>a= :Tabularize /=<CR>
+    vmap <leader>a= :Tabularize /=<CR>
+    nmap <leader>a> :Tabularize /=><CR>
+    vmap <leader>a> :Tabularize /=><CR>
+    nmap <leader>a: :Tabularize /:\zs<CR>
+    vmap <leader>a: :Tabularize /:\zs<CR>
+endif
+
+
+"Highlight the 80th column
+highlight OverLength ctermbg=yellow ctermfg=white guibg=yellow guifg=white
+
+:nnoremap <leader>oo :match OverLength /\%81v./<CR>
+:nnoremap <leader>no :match none<CR>
