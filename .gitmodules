@@ -31,9 +31,6 @@
 [submodule "lusty"]
 	path = lusty
 	url = https://github.com/sjbach/lusty.git
-[submodule "VimClojure"]
-	path = VimClojure
-	url = https://github.com/vim-scripts/VimClojure.git
 [submodule "vim-getafe"]
 	path = vim-getafe
 	url = https://github.com/larssmit/vim-getafe
