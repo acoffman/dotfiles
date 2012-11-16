@@ -208,17 +208,6 @@ function SpellToggle()
   endif
 endfunction
 
-"Tabularize shortcuts
-if exists(":Tabularize")
-    nmap <leader>a= :Tabularize /=<CR>
-    vmap <leader>a= :Tabularize /=<CR>
-    nmap <leader>a> :Tabularize /=><CR>
-    vmap <leader>a> :Tabularize /=><CR>
-    nmap <leader>a: :Tabularize /:\zs<CR>
-    vmap <leader>a: :Tabularize /:\zs<CR>
-endif
-
-
 "Highlight the 80th column
 highlight OverLength ctermbg=yellow ctermfg=white guibg=yellow guifg=white
 
