@@ -27,7 +27,9 @@ set wildmode=list:longest,full
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
+autocmd Filetype perl setlocal sw=4 sts=4 ts=4
 set expandtab
+
 " Display extra whitespace
 set list listchars=tab:»·,trail:·
 
