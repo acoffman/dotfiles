@@ -213,3 +213,11 @@ highlight OverLength ctermbg=yellow ctermfg=white guibg=yellow guifg=white
 
 :nnoremap <leader>oo :match OverLength /\%81v./<CR>
 :nnoremap <leader>no :match none<CR>
+
+"Configure gist vim
+let g:gist_clip_command = 'pbcopy'
+let g:gist_detect_filetype = 1
+let g:gist_open_browser_after_post = 1
+let g:gist_show_privates = 1
+let g:gist_post_private = 1
+
