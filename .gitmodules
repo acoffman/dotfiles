@@ -40,3 +40,6 @@
 [submodule "tabular"]
 	path = tabular
 	url = git://github.com/godlygeek/tabular.git
+[submodule "gist-vim"]
+	path = gist-vim
+	url = git://github.com/mattn/gist-vim.git
