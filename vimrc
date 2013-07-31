@@ -3,6 +3,8 @@ call pathogen#runtime_append_all_bundles()
 filetype plugin indent on
 set t_Co=256
 
+set lazyredraw
+
 set nocompatible
 
 set modelines=0
@@ -31,7 +33,7 @@ autocmd Filetype perl setlocal sw=4 sts=4 ts=4
 set expandtab
 
 " Display extra whitespace
-set list listchars=tab:»·,trail:·
+set list listchars=tab:»·,trail:·,extends:>,precedes:<
 
 set encoding=utf-8
 set scrolloff=3
@@ -146,7 +148,6 @@ vnoremap Q gq
 " already done by yy):
 noremap Y y$
 
-
 set laststatus=2
 
 autocmd BufNewFile,BufRead *.rhtml set filetype=eruby
@@ -166,7 +167,6 @@ set nu
 set binary noeol
 set showmatch
 
-
 colorscheme getafe
 
 set wildmenu
@@ -180,12 +180,12 @@ set guioptions-=r
 "better status line
 set statusline=%<%f%h%m%r%=%{strftime(\"%I:%M:%S\ \%p,\ %a\ %b\ %d,\ %Y\")}\ \ \|\ \ %{&ff}\ %l,%c%V\ %P\ \ 
 "bigger font so i don't go blind
-set guifont=Monaco:h12
+set guifont=Inconsolata-dz\ for\ Powerline:h13
 
 set et
 
-"ack on ubuntu
-let g:ackprg="ack -H --nocolor --nogroup --column"
+"use the silver searcher
+let g:ackprg = 'ag --nogroup --nocolor --column'
 
 "split stuff
 nmap <silent> <C-k> :wincmd k<CR>
@@ -214,13 +214,11 @@ highlight OverLength ctermbg=yellow ctermfg=white guibg=yellow guifg=white
 :nnoremap <leader>oo :match OverLength /\%81v./<CR>
 :nnoremap <leader>no :match none<CR>
 
-"Configure gist vim
-let g:gist_clip_command = 'pbcopy'
-let g:gist_detect_filetype = 1
-let g:gist_open_browser_after_post = 1
-let g:gist_show_privates = 1
-let g:gist_post_private = 1
-
 "configure syntastic
-let g:syntastic_auto_loc_list=1
+let g:syntastic_always_populate_loc_list=1
 
+"airline congfig
+let g:airline_powerline_fonts = 1
+let g:airline_enable_syntastic=1
+let g:airline_enable_ctrlp=1
+let g:airline_theme='dark'

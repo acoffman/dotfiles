@@ -58,3 +58,18 @@
 [submodule "vim-gitgutter"]
 	path = vim-gitgutter
 	url = git://github.com/airblade/vim-gitgutter.git
+[submodule "vim-ruby"]
+	path = vim-ruby
+	url = git://github.com/vim-ruby/vim-ruby.git
+[submodule "vim-golang"]
+	path = vim-golang
+	url = git://github.com/jnwhiteh/vim-golang.git
+[submodule "vim-airline"]
+	path = vim-airline
+	url = https://github.com/bling/vim-airline
+[submodule "vim-vombato-colorscheme"]
+	path = vim-vombato-colorscheme
+	url = https://github.com/molok/vim-vombato-colorscheme
+[submodule "vim-fugitive"]
+	path = vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
