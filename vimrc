@@ -155,7 +155,6 @@ autocmd BufNewFile,BufRead *.pm set filetype=perl
 autocmd BufNewFile,BufRead *.t set filetype=perl
 " in makefiles, don't expand tabs to spaces, since actual tab characters are
 " needed, and have indentation at 8 chars to be sure that all indents are tabs
-" (despite the mappings later):
 autocmd FileType make set noexpandtab shiftwidth=8
 " use 4 space indention for perl files instead of 2
 autocmd Filetype perl setlocal sw=4 sts=4 ts=4
@@ -169,7 +168,7 @@ map <Leader>t :TagbarToggle<CR>
 " Lusty Juggler
 let g:LustyJugglerSuppressRubyWarning = 1
 
-" ack.vim
+" Ack.vim
 " use silver searcher
 let g:ackprg = 'ag --nogroup --nocolor --column'
 nnoremap <leader>a :Ack<space>
