@@ -73,3 +73,6 @@
 [submodule "vim-fugitive"]
 	path = vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
+[submodule "numbers.vim"]
+	path = numbers.vim
+	url = https://github.com/myusuf3/numbers.vim.git
