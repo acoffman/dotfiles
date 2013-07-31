@@ -23,6 +23,7 @@ Bundle 'w0ng/vim-hybrid'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-rails'
 Bundle 'kana/vim-textobj-user'
+Bundle 'tpope/vim-haml'
 
 Bundle 'VimClojure'
 Bundle 'argtextobj.vim'
@@ -41,6 +42,10 @@ set complete=.,b,u,]
 nnoremap <silent> <CR> :noh<CR><CR>
 "close buffer
 nnoremap <silent> <leader>q :bd<CR>
+
+"allow for repeated indentation while maintaining visual selection
+vnoremap < <gv
+vnoremap > >gv
 
 runtime macros/matchit.vim
 
