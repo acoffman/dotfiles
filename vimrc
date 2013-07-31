@@ -1,15 +1,40 @@
 filetype off
-call pathogen#runtime_append_all_bundles()
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+"Bundles
+Bundle 'gmarik/vundle'
+
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'mileszs/ack.vim'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'kien/ctrlp.vim'
+Bundle 'sjbach/lusty'
+Bundle 'myusuf3/numbers.vim'
+Bundle 'nelstrom/vim-textobj-rubyblock'
+Bundle 'scrooloose/syntastic'
+Bundle 'godlygeek/tabular'
+Bundle 'bling/vim-airline'
+Bundle 'tpope/vim-fugitive'
+Bundle 'nwhiteh/vim-golang'
+Bundle 'w0ng/vim-hybrid'
+Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-rails'
+Bundle 'kana/vim-textobj-user'
+
+Bundle 'VimClojure'
+Bundle 'argtextobj.vim'
+
+
 filetype plugin indent on
+set lazyredraw
 set t_Co=256
 
-set lazyredraw
-
 set nocompatible
-
 set modelines=0
 set clipboard=unnamed
-
 set complete=.,b,u,]
 
 "hide search highlighting on enter
@@ -167,7 +192,7 @@ set nu
 set binary noeol
 set showmatch
 
-colorscheme getafe
+colorscheme hybrid
 
 set wildmenu
 
