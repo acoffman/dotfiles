@@ -27,6 +27,7 @@ Bundle 'tpope/vim-rails'
 Bundle 'kana/vim-textobj-user'
 Bundle 'tpope/vim-haml'
 Bundle 'majutsushi/tagbar'
+Bundle 'airblade/vim-gitgutter'
 
 Bundle 'VimClojure'
 Bundle 'argtextobj.vim'
