@@ -28,6 +28,9 @@ Bundle 'kana/vim-textobj-user'
 Bundle 'tpope/vim-haml'
 Bundle 'majutsushi/tagbar'
 Bundle 'airblade/vim-gitgutter'
+Bundle 'derekwyatt/vim-scala'
+Bundle 'gre/play2vim'
+
 
 Bundle 'VimClojure'
 Bundle 'argtextobj.vim'
@@ -79,6 +82,8 @@ set ruler
 set backspace=indent,eol,start
 " always display the status line
 set laststatus=2
+" ignore case when searching
+set ignorecase
 " search is case insensitive unless caps
 set smartcase
 " search incrementally
@@ -171,7 +176,7 @@ let g:LustyJugglerSuppressRubyWarning = 1
 
 " Ack.vim
 " use silver searcher
-let g:ackprg = 'ag --nogroup --nocolor --column'
+let g:ackprg = 'ag -i --nogroup --nocolor --column'
 nnoremap <leader>a :Ack<space>
 
 " CtrlP
