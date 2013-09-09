@@ -147,6 +147,9 @@ nmap <silent> <C-h> :wincmd h<CR>
 nmap <silent> <C-l> :wincmd l<CR>
 nmap <silent> <C-n> :vsplit <CR>
 nmap <silent> <C-s> :split <CR>
+" navigate buffers
+nmap <silent> <C-[> :bp<CR>
+nmap <silent> <C-]> :bn<CR>
 " Highlight the 80th column
 highlight OverLength ctermbg=yellow ctermfg=white guibg=yellow guifg=white
 nnoremap <leader>oo :match OverLength /\%81v./<CR>
