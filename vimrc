@@ -14,7 +14,6 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'kien/ctrlp.vim'
 Bundle 'sjbach/lusty'
-Bundle 'myusuf3/numbers.vim'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'scrooloose/syntastic'
 Bundle 'godlygeek/tabular'
@@ -100,6 +99,8 @@ set nowrap
 set matchpairs+=<:>
 " show line numbers
 set nu
+" use relative line numbers
+set relativenumber
 " dont insert an eol char when editing binary files
 set binary noeol
 " treat lines starting with a quote mark as comments (for `Vim' files)
@@ -147,9 +148,6 @@ nmap <silent> <C-h> :wincmd h<CR>
 nmap <silent> <C-l> :wincmd l<CR>
 nmap <silent> <C-n> :vsplit <CR>
 nmap <silent> <C-s> :split <CR>
-" navigate buffers
-nmap <silent> <C-[> :bp<CR>
-nmap <silent> <C-]> :bn<CR>
 " Highlight the 80th column
 highlight OverLength ctermbg=yellow ctermfg=white guibg=yellow guifg=white
 nnoremap <leader>oo :match OverLength /\%81v./<CR>
@@ -194,5 +192,4 @@ let g:airline_powerline_fonts = 1
 let g:airline_enable_syntastic=1
 let g:airline_enable_ctrlp=1
 let g:airline_theme='dark'
-let g:airline#extensions#tabline#enabled = 1
 
