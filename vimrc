@@ -8,18 +8,12 @@ call vundle#rc()
 " **** Bundles ****
 Bundle 'gmarik/vundle'
 
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'mileszs/ack.vim'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'kien/ctrlp.vim'
-Bundle 'sjbach/lusty'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'scrooloose/syntastic'
 Bundle 'godlygeek/tabular'
 Bundle 'bling/vim-airline'
-Bundle 'tpope/vim-fugitive'
-Bundle 'jnwhiteh/vim-golang'
 Bundle 'w0ng/vim-hybrid'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-rails'
@@ -27,11 +21,12 @@ Bundle 'kana/vim-textobj-user'
 Bundle 'tpope/vim-haml'
 Bundle 'majutsushi/tagbar'
 Bundle 'airblade/vim-gitgutter'
-Bundle 'derekwyatt/vim-scala'
-Bundle 'gre/play2vim'
+Bundle 'jnwhiteh/vim-golang'
+Bundle 'wting/rust.vim'
+Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/vimproc.vim'
 
 
-Bundle 'VimClojure'
 Bundle 'argtextobj.vim'
 
 filetype plugin indent on
@@ -46,8 +41,6 @@ set lazyredraw
 set t_Co=256
 " turn off modeline support
 set nomodeline
-" use the system clipboard as the anonymous register
-set clipboard=unnamed
 " set locations to look for autocomplete matches .: current buff, b: other
 " loaded buffers, u: other unloaded buffers, t: tags,
 set complete=.,b,u,t
@@ -172,17 +165,26 @@ autocmd Filetype perl setlocal sw=4 sts=4 ts=4
 let g:tagbar_usearrows = 1
 map <Leader>t :TagbarToggle<CR>
 
-" Lusty Juggler
-let g:LustyJugglerSuppressRubyWarning = 1
-
-" Ack.vim
-" use silver searcher
-let g:ackprg = 'ag -i --nogroup --nocolor --column'
-nnoremap <leader>a :Ack<space>
-
-" CtrlP
-let g:ctrlp_custom_ignore = '\.git\|\.hg\|\.svn\|vendor/\|log/\|tmp/'
-let g:ctrlp_dotfiles = 0
+" Unite
+let g:unite_source_history_yank_enable = 1
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+if executable('ag')
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts = '-i --nogroup --nocolor --column'
+  let g:unite_source_grep_recursive_opt = ''
+elseif executable('ack')
+  let g:unite_source_grep_command = 'ack'
+  let g:unite_source_grep_default_opts = '-i --no-heading --no-color -k -H'
+  let g:unite_source_grep_recursive_opt = ''
+endif
+" yank history
+nnoremap <leader>y :<C-u>Unite -start-insert -no-split -buffer-name=yank history/yank<cr>
+" fuzzy file search
+nnoremap <C-p> :<C-u>Unite -start-insert -no-split -buffer-name=files file_rec/async:!<cr>
+" grep files
+nnoremap <leader>a :<C-u>Unite -start-insert -no-split -buffer-name=grep grep:.<cr>
+" open buffers
+nnoremap <leader>b :<C-u>Unite -start-insert -no-split -buffer-name=buffer buffer<cr>
 
 " Syntastic
 let g:syntastic_always_populate_loc_list=1
