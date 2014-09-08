@@ -10,14 +10,12 @@ Bundle 'gmarik/vundle'
 
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'scrooloose/syntastic'
 Bundle 'godlygeek/tabular'
 Bundle 'bling/vim-airline'
 Bundle 'w0ng/vim-hybrid'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-rails'
-Bundle 'kana/vim-textobj-user'
 Bundle 'tpope/vim-haml'
 Bundle 'majutsushi/tagbar'
 Bundle 'airblade/vim-gitgutter'
@@ -27,7 +25,6 @@ Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/vimproc.vim'
 
 
-Bundle 'argtextobj.vim'
 
 filetype plugin indent on
 syntax on
