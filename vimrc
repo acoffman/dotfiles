@@ -23,19 +23,20 @@ Bundle 'jnwhiteh/vim-golang'
 Bundle 'wting/rust.vim'
 Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/vimproc.vim'
-
+Bundle 'chriskempson/base16-vim'
+Bundle 'cespare/vim-toml'
 
 
 filetype plugin indent on
 syntax on
-colorscheme hybrid
+set background=dark
+colorscheme base16-tomorrow
+
 runtime macros/matchit.vim
 
 " **** Set Options ****
 " dont redraw the window while executing macros or other commands
 set lazyredraw
-" 256 colors
-set t_Co=256
 " turn off modeline support
 set nomodeline
 " set locations to look for autocomplete matches .: current buff, b: other
@@ -134,7 +135,7 @@ noremap Y y$
 " navigate splits
 nmap <silent> <C-k> :wincmd k<CR>
 nmap <silent> <C-j> :wincmd j<CR>
-nmap <silent> <C-h> :wincmd h<CR>
+nmap <silent> <bs> :wincmd h<CR>
 nmap <silent> <C-l> :wincmd l<CR>
 nmap <silent> <C-n> :vsplit <CR>
 nmap <silent> <C-s> :split <CR>
@@ -185,10 +186,14 @@ nnoremap <leader>b :<C-u>Unite -start-insert -no-split -buffer-name=buffer buffe
 
 " Syntastic
 let g:syntastic_always_populate_loc_list=1
+let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 
 " Airline Statusbar
 let g:airline_powerline_fonts = 1
-let g:airline_enable_syntastic=1
-let g:airline_enable_ctrlp=1
-let g:airline_theme='dark'
+let g:airline_theme='murmur'
+
+if has('nvim')
+   set ttimeout
+   set ttimeoutlen=0
+endif
 
