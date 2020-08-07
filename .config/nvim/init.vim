@@ -1,36 +1,35 @@
 set nocompatible
 filetype off
 
-" **** Prep Vundle ****
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+" **** Prep vim-plug ****
+call plug#begin('~/.vim/plugged')
 
-" **** Bundles ****
-Bundle 'gmarik/vundle'
+" **** Plugins ****
+Plug 'kchmck/vim-coffee-script'
+Plug 'scrooloose/nerdcommenter'
+Plug 'godlygeek/tabular'
+Plug 'bling/vim-airline'
+Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-haml'
+Plug 'airblade/vim-gitgutter'
+Plug 'wting/rust.vim'
+Plug 'chriskempson/base16-vim'
+Plug 'cespare/vim-toml'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'broadinstitute/vim-wdl'
+Plug 'elixir-editors/vim-elixir'
 
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/syntastic'
-Bundle 'godlygeek/tabular'
-Bundle 'bling/vim-airline'
-Bundle 'w0ng/vim-hybrid'
-Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-haml'
-Bundle 'majutsushi/tagbar'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'jnwhiteh/vim-golang'
-Bundle 'wting/rust.vim'
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/vimproc.vim'
-Bundle 'chriskempson/base16-vim'
-Bundle 'cespare/vim-toml'
 
+call plug#end()
+
+let base16colorspace=256
+set termguicolors
 
 filetype plugin indent on
 syntax on
 set background=dark
-colorscheme base16-tomorrow
+colorscheme base16-tomorrow-night
 
 runtime macros/matchit.vim
 
@@ -135,7 +134,7 @@ noremap Y y$
 " navigate splits
 nmap <silent> <C-k> :wincmd k<CR>
 nmap <silent> <C-j> :wincmd j<CR>
-nmap <silent> <bs> :wincmd h<CR>
+nmap <silent> <C-h> :wincmd h<CR>
 nmap <silent> <C-l> :wincmd l<CR>
 nmap <silent> <C-n> :vsplit <CR>
 nmap <silent> <C-s> :split <CR>
@@ -159,41 +158,38 @@ autocmd Filetype perl setlocal sw=4 sts=4 ts=4
 
 
 " **** Plugin Specific Settings ****
-" Tagbar
-let g:tagbar_usearrows = 1
-map <Leader>t :TagbarToggle<CR>
 
-" Unite
-let g:unite_source_history_yank_enable = 1
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-if executable('ag')
-  let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts = '-i --nogroup --nocolor --column'
-  let g:unite_source_grep_recursive_opt = ''
-elseif executable('ack')
-  let g:unite_source_grep_command = 'ack'
-  let g:unite_source_grep_default_opts = '-i --no-heading --no-color -k -H'
-  let g:unite_source_grep_recursive_opt = ''
-endif
-" yank history
-nnoremap <leader>y :<C-u>Unite -start-insert -no-split -buffer-name=yank history/yank<cr>
-" fuzzy file search
-nnoremap <C-p> :<C-u>Unite -start-insert -no-split -buffer-name=files file_rec/async:!<cr>
-" grep files
-nnoremap <leader>a :<C-u>Unite -start-insert -no-split -buffer-name=grep grep:.<cr>
-" open buffers
-nnoremap <leader>b :<C-u>Unite -start-insert -no-split -buffer-name=buffer buffer<cr>
+" coc.vim Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
-" Syntastic
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 
-" Airline Statusbar
-let g:airline_powerline_fonts = 1
-let g:airline_theme='murmur'
+" coc.vim
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> g[ <Plug>(coc-diagnostic-prev)
+nmap <silent> g] <Plug>(coc-diagnostic-next)
+
 
 if has('nvim')
    set ttimeout
    set ttimeoutlen=0
 endif
-
