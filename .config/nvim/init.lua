@@ -53,6 +53,10 @@ vim.o.scrolloff = 3
 --Do not save when switching buffers
 vim.o.hidden = true
 
+-- have command-line completion first list the available options and complete the longest common part, then
+-- have further <Tab>s cycle through the possibilities
+vim.o.wildmode = "list:longest,full"
+
 --Decrease update time
 vim.o.updatetime = 250
 vim.wo.signcolumn="yes"
