@@ -137,7 +137,8 @@ vim.api.nvim_set_keymap('n', '<leader>,', [[<cmd>lua require('telescope.builtin'
 vim.g.coq_settings = {
  auto_start = 'shut-up',
  ['clients.snippets.warn'] = {},
- ['clients.tmux.enabled'] = false
+ ['clients.tmux.enabled'] = false,
+ ['keymap.jump_to_mark'] =  '' -- coq remaps ctrl-h otherwise
 }
 
 local coq = require "coq"
