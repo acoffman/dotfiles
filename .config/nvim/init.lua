@@ -20,16 +20,17 @@ require('packer').startup(function()
   use 'scrooloose/nerdcommenter'
   use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}} }
   use 'itchyny/lightline.vim'
-  use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'} }
+  use 'lewis6991/gitsigns.nvim'
   use 'neovim/nvim-lspconfig'
   use { 'ms-jpq/coq_nvim', branch = 'coq' }
   use 'RRethy/nvim-base16'
   use 'broadinstitute/vim-wdl'
   use 'godlygeek/tabular'
   use 'tpope/vim-rails'
-  use 'kosayoda/nvim-lightbulb'
+  use { 'kosayoda/nvim-lightbulb', requires = 'antoinemadec/FixCursorHold.nvim' }
   use 'kyazdani42/nvim-web-devicons'
   use 'jparise/vim-graphql'
+  use 'habamax/vim-rst'
 end)
 
 --Incremental completion
@@ -199,11 +200,32 @@ coq.lsp_ensure_capabilities({
   }
 }))
 
-
 -- Map :Format to vim.lsp.buf.formatting()
 vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 
 
+-- setup nvim lightbulb
+require('nvim-lightbulb').setup({autocmd = {enabled = true}})
 
--- Show lightbulb when code action is available
-vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
+
+-- gitsigns plugin
+require('gitsigns').setup {
+
+  on_attach = function(bufnr)
+    local gs = package.loaded.gitsigns
+
+    local function map(mode, l, r, opts)
+      opts = opts or {}
+      opts.buffer = bufnr
+      vim.keymap.set(mode, l, r, opts)
+    end
+
+    -- Actions
+    map('n', '<leader>gp', gs.preview_hunk)
+    map('n', '<leader>gb', function() gs.blame_line{full=true} end)
+    map('n', '<leader>tb', gs.toggle_current_line_blame)
+    map('n', '<leader>gd', gs.diffthis)
+    map('n', '<leader>hD', function() gs.diffthis('~') end)
+
+  end
+}
