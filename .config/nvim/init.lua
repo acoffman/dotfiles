@@ -85,6 +85,8 @@ vim.o.visualbell = true
 -- Display extra whitespace
 vim.opt.listchars = { trail = '·', tab = '»·' }
 
+-- Unified statusline
+vim.o.laststatus = 3
 
 --Remap leader to ,
 vim.g.mapleader = ","
