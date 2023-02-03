@@ -19,7 +19,7 @@ require('packer').startup(function()
   use 'wbthomason/packer.nvim'
   use 'scrooloose/nerdcommenter'
   use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}} }
-  use 'itchyny/lightline.vim'
+  use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
   use 'lewis6991/gitsigns.nvim'
   use 'neovim/nvim-lspconfig'
   use { 'ms-jpq/coq_nvim', branch = 'coq' }
@@ -31,6 +31,16 @@ require('packer').startup(function()
   use 'kyazdani42/nvim-web-devicons'
   use 'jparise/vim-graphql'
   use 'habamax/vim-rst'
+  use { "ray-x/lsp_signature.nvim" }
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = function()
+      local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+      ts_update()
+    end,
+  }
+  use 'RRethy/nvim-treesitter-endwise'
+  use 'nvim-treesitter/nvim-treesitter-textobjects'
 end)
 
 --Incremental completion
@@ -200,9 +210,9 @@ coq.lsp_ensure_capabilities({
   }
 }))
 
--- Map :Format to vim.lsp.buf.formatting()
-vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 
+require('lualine').setup()
+require "lsp_signature".setup()
 
 -- setup nvim lightbulb
 require('nvim-lightbulb').setup({autocmd = {enabled = true}})
@@ -228,4 +238,64 @@ require('gitsigns').setup {
     map('n', '<leader>hD', function() gs.diffthis('~') end)
 
   end
+}
+
+require('nvim-treesitter.configs').setup {
+  ensure_installed = {
+    "c",
+    "cpp",
+    "go",
+    "lua",
+    "rust",
+    "javascript",
+    "typescript",
+    "python",
+    "ruby",
+    "html",
+    "css",
+    "racket",
+    "sql",
+    "bash",
+    "make",
+    "comment",
+    "yaml",
+    "json",
+    "toml",
+  },
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    additional_vim_regex_highlighting = false,
+  },
+  textobjects = {
+    enable = true,
+    select = {
+      enable = true,
+
+      -- Automatically jump forward to textobj, similar to targets.vim
+      lookahead = true,
+
+      keymaps = {
+        -- You can use the capture groups defined in textobjects.scm
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        ["ic"] = "@class.inner",
+        ["ab"] = "@block.outer",
+        ["ib"] = "@block.inner",
+        ["ip"] = "@parameter.inner",
+      },
+    },
+  },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
+    },
+  },
+  endwise = {
+    enable = true,
+  },
 }
