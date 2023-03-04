@@ -41,6 +41,8 @@ require('packer').startup(function()
   }
   use 'RRethy/nvim-treesitter-endwise'
   use 'nvim-treesitter/nvim-treesitter-textobjects'
+  use 'stevearc/dressing.nvim'
+  use  'stevearc/oil.nvim'
 end)
 
 --Incremental completion
@@ -104,6 +106,7 @@ vim.g.mapleader = ","
 
 --Have Y act like D and C
 vim.api.nvim_set_keymap('n', 'Y', 'y$', { noremap = true})
+
 
 -- navigate splits
 vim.api.nvim_set_keymap('n',  '<C-k>', ':wincmd k<CR>', { silent = true})
@@ -212,7 +215,6 @@ coq.lsp_ensure_capabilities({
 
 
 require('lualine').setup()
-require "lsp_signature".setup()
 
 -- setup nvim lightbulb
 require('nvim-lightbulb').setup({autocmd = {enabled = true}})
@@ -261,6 +263,10 @@ require('nvim-treesitter.configs').setup {
     "yaml",
     "json",
     "toml",
+    "regex",
+    "vim",
+    "markdown",
+    "markdown_inline"
   },
   highlight = {
     enable = true,              -- false will disable the whole extension
@@ -299,3 +305,21 @@ require('nvim-treesitter.configs').setup {
     enable = true,
   },
 }
+
+require("oil").setup()
+
+-- Disable netrw in favor of oil.nvim
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- replace :Explore with Oil
+vim.api.nvim_create_user_command(
+  'Explore',
+  function(opts) 
+    vim.cmd('Oil --float ' .. opts.args)
+  end,
+  { nargs = '?' }
+)
+
+
+require "lsp_signature".setup()
