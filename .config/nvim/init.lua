@@ -42,7 +42,7 @@ require('packer').startup(function()
   use 'RRethy/nvim-treesitter-endwise'
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'stevearc/dressing.nvim'
-  use  'stevearc/oil.nvim'
+  use 'stevearc/oil.nvim'
 end)
 
 --Incremental completion
@@ -144,9 +144,7 @@ require('telescope').setup {
 -- Telescope
 vim.api.nvim_set_keymap('n', '<leader>p', [[<cmd>lua require('telescope.builtin').git_files()<cr>]], { noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>a', [[<cmd>lua require('telescope.builtin').live_grep()<cr>]], { noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<leader>b', [[<cmd>lua require('telescope.builtin').file_browser()<cr>]], { noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>r', [[<cmd>lua require('telescope.builtin').lsp_references()<cr>]], { noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<leader>,', [[<cmd>lua require('telescope.builtin').lsp_code_actions()<cr>]], { noremap = true, silent = true})
 
 
 -- COQ config (also in individual language server config)
@@ -306,7 +304,11 @@ require('nvim-treesitter.configs').setup {
   },
 }
 
-require("oil").setup()
+require("oil").setup({
+  view_options = {
+    show_hidden = true
+  }
+})
 
 -- Disable netrw in favor of oil.nvim
 vim.g.loaded_netrw = 1
@@ -316,7 +318,7 @@ vim.g.loaded_netrwPlugin = 1
 vim.api.nvim_create_user_command(
   'Explore',
   function(opts) 
-    vim.cmd('Oil --float ' .. opts.args)
+    vim.cmd('Oil ' .. opts.args)
   end,
   { nargs = '?' }
 )
