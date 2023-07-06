@@ -22,7 +22,6 @@ require('packer').startup(function()
   use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
   use 'lewis6991/gitsigns.nvim'
   use 'neovim/nvim-lspconfig'
-  use { 'ms-jpq/coq_nvim', branch = 'coq' }
   use 'RRethy/nvim-base16'
   use 'broadinstitute/vim-wdl'
   use 'godlygeek/tabular'
@@ -43,6 +42,12 @@ require('packer').startup(function()
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'stevearc/dressing.nvim'
   use 'stevearc/oil.nvim'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-cmdline'
+  use 'hrsh7th/nvim-cmp'
+  use 'onsails/lspkind.nvim'
 end)
 
 --Incremental completion
@@ -147,15 +152,6 @@ vim.api.nvim_set_keymap('n', '<leader>a', [[<cmd>lua require('telescope.builtin'
 vim.api.nvim_set_keymap('n', '<leader>r', [[<cmd>lua require('telescope.builtin').lsp_references()<cr>]], { noremap = true, silent = true})
 
 
--- COQ config (also in individual language server config)
-vim.g.coq_settings = {
- auto_start = 'shut-up',
- ['clients.snippets.warn'] = {},
- ['clients.tmux.enabled'] = false,
- ['keymap.jump_to_mark'] =  '' -- coq remaps ctrl-h otherwise
-}
-
-local coq = require "coq"
 
 -- LSP settings
 local nvim_lsp = require('lspconfig')
@@ -166,7 +162,7 @@ local on_attach = function(_client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  --vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
@@ -179,26 +175,79 @@ end
 --turn on for LSP debugging
 --vim.lsp.set_log_level("debug")
 
+
+-- cmp setup
+local cmp = require'cmp'
+local lspkind = require('lspkind')
+cmp.setup({
+	  mapping = {
+	    ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
+	    ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
+	    ['<C-p>'] = cmp.mapping.select_prev_item(),
+	    ['<C-n>'] = cmp.mapping.select_next_item(),
+	    -- Add tab support
+	    ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+	    ['<Tab>'] = cmp.mapping.select_next_item(),
+	    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+	    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+	    ['<C-s>'] = cmp.mapping.complete(),
+	    ['<C-e>'] = cmp.mapping.close(),
+	    ['<C-Space>'] = cmp.mapping.confirm({
+	      behavior = cmp.ConfirmBehavior.Insert,
+	      select = true,
+	    }),
+	    ['<CR>'] = cmp.mapping.confirm({
+	      behavior = cmp.ConfirmBehavior.Insert,
+	      select = true,
+	    }),
+	  },
+	  formatting = {
+	    format = lspkind.cmp_format({
+	      maxwidth = 50,
+	      mode = 'symbol_text',
+        menu = ({
+	        buffer = "[Buffer]",
+	        nvim_lsp = "[LSP]",
+	      })
+	    })
+	  },
+    sources = {
+	    { name = 'nvim_lsp_signature_help' },
+	    { name = 'nvim_lsp' },
+	    { name = 'path' },
+	    { name = 'buffer', keyword_length = 5 },
+	  },
+})
+
+cmp.setup.cmdline({ '/', '?' }, {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'buffer' }
+  }
+})
+
 -- Enable the language servers
-nvim_lsp.angularls.setup(
-  coq.lsp_ensure_capabilities({
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+nvim_lsp.angularls.setup {
+  capabilities = capabilities,
   on_attach = on_attach,
   filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx" },
   root_dir = nvim_lsp.util.root_pattern("angular.json")
-}))
+}
 
-nvim_lsp.tsserver.setup(
-coq.lsp_ensure_capabilities({
+nvim_lsp.tsserver.setup {
+  capabilities = capabilities,
   on_attach = on_attach
-}))
+}
 
-nvim_lsp.graphql.setup(
-coq.lsp_ensure_capabilities({
+nvim_lsp.graphql.setup {
+  capabilities = capabilities,
   on_attach = on_attach
-}))
+}
 
-nvim_lsp.solargraph.setup(
-coq.lsp_ensure_capabilities({
+nvim_lsp.solargraph.setup {
+  capabilities = capabilities,
   on_attach = on_attach,
   cmd = { "solargraph", "stdio" },
   filetypes = { "ruby" },
@@ -209,7 +258,7 @@ coq.lsp_ensure_capabilities({
         diagnostics = false
     }
   }
-}))
+}
 
 
 require('lualine').setup()
@@ -322,6 +371,5 @@ vim.api.nvim_create_user_command(
   end,
   { nargs = '?' }
 )
-
 
 require "lsp_signature".setup()
