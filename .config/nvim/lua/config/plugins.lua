@@ -1,14 +1,22 @@
 return {
   -- colorscheme
+  --{
+    --'RRethy/nvim-base16',
+    --lazy = false, -- Make its loaded during startup
+    --priority = 1000, -- Make sure its loaded before everything else
+    --config = function ()
+      --vim.cmd "colorscheme base16-tomorrow-night"
+    --end
+  --},
+
   {
-    'RRethy/nvim-base16',
-    lazy = false, -- Make its loaded during startup
-    priority = 1000, -- Make sure its loaded before everything else
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
     config = function ()
-      vim.cmd "colorscheme base16-tomorrow-night"
+      vim.cmd "colorscheme catppuccin-mocha"
     end
   },
-
 
   -- general ui improvements
   {
@@ -18,7 +26,11 @@ return {
       'kyazdani42/nvim-web-devicons',
     },
     config = function()
-      require('lualine').setup {}
+      require('lualine').setup {
+        options = {
+          theme = "catppuccin"
+        }
+      }
     end
   },
 
@@ -63,6 +75,13 @@ return {
     event = 'BufReadPost',
   },
 
+  {
+    'j-hui/fidget.nvim',
+    tag = 'legacy',
+    config = function()
+      require('fidget').setup()
+    end
+  },
 
   -- completion
   {
