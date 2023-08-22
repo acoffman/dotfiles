@@ -137,6 +137,9 @@ return {
     end
   },
 
+  -- breadcrumbs
+  'Bekaboo/dropbar.nvim',
+
   -- commenting
   'scrooloose/nerdcommenter',
 
