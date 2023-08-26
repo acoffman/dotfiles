@@ -149,4 +149,6 @@ return {
   'habamax/vim-rst',
   'tpope/vim-rails',
 
+  -- highlight matching tokens
+  'RRethy/vim-illuminate'
 }
