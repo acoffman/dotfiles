@@ -1,6 +1,12 @@
 --turn on for LSP debugging
 --vim.lsp.set_log_level("debug")
 
+require("mason").setup()
+require("mason-lspconfig").setup {
+  automatic_installation = true,
+  ensure_installed = { 'solargraph', 'tsserver', 'angularls', 'graphql' }
+}
+
 -- LSP settings
 local nvim_lsp = require('lspconfig')
 
