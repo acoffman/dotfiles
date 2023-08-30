@@ -138,6 +138,19 @@ return {
     end
   },
 
+
+  -- trouble
+  {
+   'folke/trouble.nvim',
+    dependencies = {
+      'nvim-telescope/telescope.nvim',
+      'kyazdani42/nvim-web-devicons'
+    },
+    config = function()
+      require 'config.trouble'
+    end
+  },
+
   -- breadcrumbs
   'Bekaboo/dropbar.nvim',
 
@@ -152,4 +165,5 @@ return {
 
   -- highlight matching tokens
   'RRethy/vim-illuminate'
+
 }
