@@ -164,6 +164,14 @@ return {
   'tpope/vim-rails',
 
   -- highlight matching tokens
-  'RRethy/vim-illuminate'
+  'RRethy/vim-illuminate',
 
+  -- surround
+  {
+    'kylechui/nvim-surround',
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup()
+    end
+  }
 }
