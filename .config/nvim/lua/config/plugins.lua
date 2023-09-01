@@ -23,7 +23,7 @@ return {
     'nvim-lualine/lualine.nvim',
     lazy = false,
     dependencies = {
-      'kyazdani42/nvim-web-devicons',
+      'nvim-tree/nvim-web-devicons',
     },
     config = function()
       require('lualine').setup {
@@ -130,7 +130,6 @@ return {
   {
     'nvim-telescope/telescope.nvim',
     dependencies = {
-      'nvim-lua/popup.nvim',
       'nvim-lua/plenary.nvim'
     },
     config = function()
@@ -144,7 +143,7 @@ return {
    'folke/trouble.nvim',
     dependencies = {
       'nvim-telescope/telescope.nvim',
-      'kyazdani42/nvim-web-devicons'
+      'nvim-tree/nvim-web-devicons'
     },
     config = function()
       require 'config.trouble'
@@ -174,4 +173,6 @@ return {
       require("nvim-surround").setup()
     end
   }
+
+
 }
