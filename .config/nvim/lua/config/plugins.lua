@@ -1,20 +1,12 @@
 return {
   -- colorscheme
-  --{
-    --'RRethy/nvim-base16',
-    --lazy = false, -- Make its loaded during startup
-    --priority = 1000, -- Make sure its loaded before everything else
-    --config = function ()
-      --vim.cmd "colorscheme base16-tomorrow-night"
-    --end
-  --},
-
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
+    "folke/tokyonight.nvim",
+    lazy = false,
     priority = 1000,
+    opts = {},
     config = function ()
-      vim.cmd "colorscheme catppuccin-mocha"
+      vim.cmd "colorscheme tokyonight"
     end
   },
 
@@ -28,7 +20,7 @@ return {
     config = function()
       require('lualine').setup {
         options = {
-          theme = "catppuccin"
+          theme = "tokyonight"
         }
       }
     end
