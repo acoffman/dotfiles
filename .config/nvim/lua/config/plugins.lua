@@ -146,6 +146,14 @@ return {
     end
   },
 
+  -- formatters
+  {
+    'stevearc/conform.nvim',
+    config = function()
+      require 'config.conform'
+    end
+  },
+
   -- breadcrumbs
   'Bekaboo/dropbar.nvim',
 
