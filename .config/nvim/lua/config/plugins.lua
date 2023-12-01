@@ -153,6 +153,14 @@ return {
     end
   },
 
+  -- move visual selections
+  {
+    'echasnovski/mini.move',
+    config = function()
+      require 'config.move'
+    end
+  },
+
   -- breadcrumbs
   'Bekaboo/dropbar.nvim',
 
