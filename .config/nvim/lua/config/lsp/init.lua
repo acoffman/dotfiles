@@ -53,11 +53,11 @@ nvim_lsp.solargraph.setup {
   on_attach = on_attach,
   cmd = { "solargraph", "stdio" },
   filetypes = { "ruby" },
-    root_dir = nvim_lsp.util.root_pattern("Gemfile"),
-    settings = {
-      solargraph = {
-        --rubocop
-        diagnostics = false
+  root_dir = nvim_lsp.util.root_pattern("Gemfile"),
+  settings = {
+    solargraph = {
+      --rubocop
+      diagnostics = false
     }
   }
 }
