@@ -61,18 +61,19 @@ return {
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      'kosayoda/nvim-lightbulb'
+      'kosayoda/nvim-lightbulb',
     },
     config = function()
       require 'config.lsp'
     end,
+    event = { "BufReadPost", "BufNewFile" },
+    cmd = { "LspInfo", "LspInstall", "LspUninstall" }
   },
 
   {
     'j-hui/fidget.nvim',
-    config = function()
-      require('fidget').setup()
-    end
+    config = true,
+    event = { "BufReadPost", "BufNewFile" },
   },
 
   -- completion
@@ -123,7 +124,8 @@ return {
       "sindrets/diffview.nvim",
       "nvim-telescope/telescope.nvim",
     },
-    config = true
+    config = true,
+    cmd = 'Neogit'
   },
 
 
@@ -152,7 +154,8 @@ return {
     },
     config = function()
       require 'config.trouble'
-    end
+    end,
+    event = 'VeryLazy'
   },
 
   -- formatters
@@ -160,7 +163,9 @@ return {
     'stevearc/conform.nvim',
     config = function()
       require 'config.conform'
-    end
+    end,
+    event = 'BufWritePre',
+    cmd = 'ConformInfo'
   },
 
   -- move visual selections
@@ -178,13 +183,26 @@ return {
   'scrooloose/nerdcommenter',
 
   -- syntax
-  'broadinstitute/vim-wdl',
-  'jparise/vim-graphql',
+  { 
+    'broadinstitute/vim-wdl',
+    ft = 'wdl'
+  },
+  {
+    'jparise/vim-graphql',
+    ft = {'gql', 'graphql'},
+  },
+  {
   'habamax/vim-rst',
+  ft = 'wdl'
+  },
+
   'tpope/vim-rails',
 
   -- highlight matching tokens
-  'RRethy/vim-illuminate',
+  {
+    'RRethy/vim-illuminate',
+    event = "BufNew"
+  },
 
   -- surround
   {
