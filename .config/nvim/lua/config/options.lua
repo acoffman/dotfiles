@@ -56,4 +56,5 @@ vim.opt.listchars = { trail = '·', tab = '»·' }
 -- Unified statusline
 vim.o.laststatus = 3
 
+vim.opt.shortmess:append({I = true })
 
