@@ -24,11 +24,11 @@ vim.o.hidden = true
 vim.o.wildmode = "list:longest,full"
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt="menuone,noinsert"
+vim.o.completeopt = "menuone,noinsert"
 
 --Decrease update time
 vim.o.updatetime = 250
-vim.wo.signcolumn="yes"
+vim.wo.signcolumn = "yes"
 vim.o.ttimeout = true
 vim.o.ttimeoutlen = 0
 
@@ -51,10 +51,9 @@ vim.o.expandtab = true
 vim.o.visualbell = true
 
 -- Display extra whitespace
-vim.opt.listchars = { trail = '·', tab = '»·' }
+vim.opt.listchars = { trail = "·", tab = "»·" }
 
 -- Unified statusline
 vim.o.laststatus = 3
 
-vim.opt.shortmess:append({I = true })
-
+vim.opt.shortmess:append({ I = true })

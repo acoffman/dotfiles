@@ -5,116 +5,109 @@ return {
     lazy = false,
     priority = 1000,
     opts = {},
-    config = function ()
-      vim.cmd "colorscheme tokyonight"
-    end
+    config = function()
+      vim.cmd("colorscheme tokyonight")
+    end,
   },
 
   -- general ui improvements
   {
-    'nvim-lualine/lualine.nvim',
+    "nvim-lualine/lualine.nvim",
     lazy = false,
     dependencies = {
-      'nvim-tree/nvim-web-devicons',
+      "nvim-tree/nvim-web-devicons",
     },
     config = function()
-      require('lualine').setup {
+      require("lualine").setup({
         options = {
-          theme = "tokyonight"
-        }
-      }
-    end
-  },
-
-  { 
-    'stevearc/dressing.nvim',
-    lazy=false
+          theme = "tokyonight",
+        },
+      })
+    end,
   },
 
   {
-    'stevearc/oil.nvim',
-    lazy=false,
+    "stevearc/dressing.nvim",
+    lazy = false,
+  },
+
+  {
+    "stevearc/oil.nvim",
+    lazy = false,
     config = function()
       require("oil").setup({
         view_options = {
-          show_hidden = true
-        }
+          show_hidden = true,
+        },
       })
       -- Disable netrw in favor of oil.nvim
       vim.g.loaded_netrw = 1
       vim.g.loaded_netrwPlugin = 1
       -- replace :Explore with Oil
-      vim.api.nvim_create_user_command(
-        'Explore',
-        function(opts) 
-          vim.cmd('Oil ' .. opts.args)
-        end,
-        { nargs = '?' }
-      )
-    end
+      vim.api.nvim_create_user_command("Explore", function(opts)
+        vim.cmd("Oil " .. opts.args)
+      end, { nargs = "?" })
+    end,
   },
 
-
   -- lsp
-  { 
-    'neovim/nvim-lspconfig',
+  {
+    "neovim/nvim-lspconfig",
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      'kosayoda/nvim-lightbulb',
+      "kosayoda/nvim-lightbulb",
     },
     config = function()
-      require 'config.lsp'
+      require("config.lsp")
     end,
     event = { "BufReadPost", "BufNewFile" },
-    cmd = { "LspInfo", "LspInstall", "LspUninstall" }
+    cmd = { "LspInfo", "LspInstall", "LspUninstall" },
   },
 
   {
-    'j-hui/fidget.nvim',
+    "j-hui/fidget.nvim",
     config = true,
     event = { "BufReadPost", "BufNewFile" },
   },
 
   -- completion
   {
-    'hrsh7th/nvim-cmp',
+    "hrsh7th/nvim-cmp",
     dependencies = {
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-cmdline',
-      'onsails/lspkind.nvim',
-      'ray-x/lsp_signature.nvim'
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-cmdline",
+      "onsails/lspkind.nvim",
+      "ray-x/lsp_signature.nvim",
     },
     config = function()
-      require 'config.cmp'
+      require("config.cmp")
     end,
-    event = 'InsertEnter'
+    event = "InsertEnter",
   },
-
 
   -- treesitter
   {
-    'nvim-treesitter/nvim-treesitter',
+    "nvim-treesitter/nvim-treesitter",
     dependencies = {
-      'RRethy/nvim-treesitter-endwise',
-      'nvim-treesitter/nvim-treesitter-textobjects'
+      "RRethy/nvim-treesitter-endwise",
+      "nvim-treesitter/nvim-treesitter-textobjects",
     },
-    build = ':TSUpdate',
+    build = ":TSUpdate",
     config = function()
-      require 'config.treesitter'
+      require("config.treesitter")
     end,
-    event = 'BufReadPost',
+    event = "BufReadPost",
   },
-
 
   -- git
   {
-    'lewis6991/gitsigns.nvim',
+    "lewis6991/gitsigns.nvim",
     config = function()
-      require 'config.git'
-    end
+      require("config.git")
+    end,
   },
 
   {
@@ -125,93 +118,91 @@ return {
       "nvim-telescope/telescope.nvim",
     },
     config = true,
-    cmd = 'Neogit'
+    cmd = "Neogit",
   },
-
 
   -- telescope
   {
-    'nvim-telescope/telescope.nvim',
+    "nvim-telescope/telescope.nvim",
     dependencies = {
-      'nvim-lua/plenary.nvim',
-      { 
-        'nvim-telescope/telescope-fzf-native.nvim',
-        build = 'make' 
-      }
+      "nvim-lua/plenary.nvim",
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "make",
+      },
     },
     config = function()
-      require 'config.telescope'
-    end
+      require("config.telescope")
+    end,
   },
-
 
   -- trouble
   {
-   'folke/trouble.nvim',
+    "folke/trouble.nvim",
     dependencies = {
-      'nvim-telescope/telescope.nvim',
-      'nvim-tree/nvim-web-devicons'
+      "nvim-telescope/telescope.nvim",
+      "nvim-tree/nvim-web-devicons",
     },
     config = function()
-      require 'config.trouble'
+      require("config.trouble")
     end,
-    event = 'VeryLazy'
+    event = "VeryLazy",
   },
 
   -- formatters
   {
-    'stevearc/conform.nvim',
+    "stevearc/conform.nvim",
     config = function()
-      require 'config.conform'
+      require("config.conform")
     end,
-    event = 'BufWritePre',
-    cmd = 'ConformInfo'
+    event = "BufWritePre",
+    cmd = "ConformInfo",
   },
 
   -- move visual selections
   {
-    'echasnovski/mini.move',
+    "echasnovski/mini.move",
     config = function()
-      require 'config.move'
-    end
+      require("config.move")
+    end,
   },
 
   -- breadcrumbs
-  'Bekaboo/dropbar.nvim',
+  "Bekaboo/dropbar.nvim",
 
   -- commenting
-  'scrooloose/nerdcommenter',
+  "scrooloose/nerdcommenter",
 
   -- syntax
-  { 
-    'broadinstitute/vim-wdl',
-    ft = 'wdl'
+  {
+    "broadinstitute/vim-wdl",
+    ft = "wdl",
   },
   {
-    'jparise/vim-graphql',
-    ft = {'gql', 'graphql'},
+    "jparise/vim-graphql",
+    ft = { "gql", "graphql" },
   },
   {
-  'habamax/vim-rst',
-  ft = 'wdl'
+    "habamax/vim-rst",
+    ft = "wdl",
   },
-
-  'tpope/vim-rails',
+  {
+    "tpope/vim-rails",
+    ft = { "ruby", "eruby" },
+  },
 
   -- highlight matching tokens
   {
-    'RRethy/vim-illuminate',
-    event = "BufNew"
+    "RRethy/vim-illuminate",
+    event = "BufNew",
   },
 
   -- surround
   {
-    'kylechui/nvim-surround',
-    event = "VeryLazy",
+    "kylechui/nvim-surround",
     config = function()
       require("nvim-surround").setup()
-    end
-  }
-
-
+    end,
+    event = "VeryLazy",
+  },
 }

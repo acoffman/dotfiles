@@ -1,32 +1,32 @@
-require('nvim-treesitter.configs').setup {
+require("nvim-treesitter.configs").setup({
   ensure_installed = {
-    'c',
-    'cpp',
-    'go',
-    'lua',
-    'rust',
-    'javascript',
-    'typescript',
-    'python',
-    'ruby',
-    'html',
-    'css',
-    'racket',
-    'sql',
-    'bash',
-    'make',
-    'comment',
-    'yaml',
-    'json',
-    'toml',
-    'regex',
-    'vim',
-    'markdown',
-    'markdown_inline',
-    'vimdoc'
+    "c",
+    "cpp",
+    "go",
+    "lua",
+    "rust",
+    "javascript",
+    "typescript",
+    "python",
+    "ruby",
+    "html",
+    "css",
+    "racket",
+    "sql",
+    "bash",
+    "make",
+    "comment",
+    "yaml",
+    "json",
+    "toml",
+    "regex",
+    "vim",
+    "markdown",
+    "markdown_inline",
+    "vimdoc",
   },
   highlight = {
-    enable = true,              -- false will disable the whole extension
+    enable = true, -- false will disable the whole extension
     additional_vim_regex_highlighting = false,
   },
   textobjects = {
@@ -61,5 +61,4 @@ require('nvim-treesitter.configs').setup {
   endwise = {
     enable = true,
   },
-}
-
+})

@@ -5,9 +5,10 @@ conform.setup({
     javascript = { "prettierd" },
     html = { "prettierd" },
     typescript = { "prettierd" },
+    lua = { "stylua" },
   },
   format_on_save = {
     timeout_ms = 500,
-    lsp_fallback = false
-  }
+    lsp_fallback = false,
+  },
 })

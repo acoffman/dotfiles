@@ -1,5 +1,9 @@
-vim.keymap.set("n", "<leader>xx", function() require("trouble").toggle() end)
-vim.keymap.set("n", "<leader>xd", function() require("trouble").open("document_diagnostics") end)
+vim.keymap.set("n", "<leader>xx", function()
+  require("trouble").toggle()
+end)
+vim.keymap.set("n", "<leader>xd", function()
+  require("trouble").open("document_diagnostics")
+end)
 
 -- <c-t> opens telescope results in trouble
 local actions = require("telescope.actions")
@@ -7,14 +11,14 @@ local trouble = require("trouble.providers.telescope")
 
 local telescope = require("telescope")
 
-telescope.setup {
+telescope.setup({
   defaults = {
     mappings = {
       i = { ["<c-t>"] = trouble.open_with_trouble },
       n = { ["<c-t>"] = trouble.open_with_trouble },
     },
   },
-}
+})
 
 -- x will remove items from the Telescope results list: https://github.com/folke/trouble.nvim/issues/149
 vim.api.nvim_create_autocmd({ "FileType" }, {
@@ -58,7 +62,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
       if #telescope.results == 0 then
         require("trouble").close()
       else
-        require("trouble").refresh { provider = "telescope", auto = false }
+        require("trouble").refresh({ provider = "telescope", auto = false })
       end
     end
 
