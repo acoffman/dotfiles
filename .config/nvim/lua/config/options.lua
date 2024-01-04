@@ -51,7 +51,8 @@ vim.o.expandtab = true
 vim.o.visualbell = true
 
 -- Display extra whitespace
-vim.opt.listchars = { trail = "·", tab = "»·" }
+vim.opt.list = true
+vim.opt.listchars:append({ trail = "•", tab = "»·" })
 
 -- Unified statusline
 vim.o.laststatus = 3
