@@ -11,7 +11,8 @@ require("mason-lspconfig").setup({
 local nvim_lsp = require("lspconfig")
 
 local on_attach = function(_client, bufnr)
-  require("lsp_signature").on_attach()
+  -- dont show the inline hint in addition to the floating window
+  require("lsp_signature").on_attach({ hint_enable = false })
 
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
@@ -25,6 +26,29 @@ local on_attach = function(_client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
 
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+
+  --  on hover, show diagnostics in floating window, disable inline diagnostics
+  vim.api.nvim_create_autocmd("CursorHold", {
+    buffer = bufnr,
+    callback = function()
+      local opts = {
+        focusable = false,
+        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+        border = "rounded",
+        source = "if_many",
+        prefix = "",
+        scope = "line",
+        header = "",
+      }
+      local row, _ = unpack(vim.api.nvim_win_get_cursor(0))
+      if next(vim.diagnostic.get(bufnr, { lnum = row - 1 })) == nil then
+        vim.diagnostic.show()
+      else
+        vim.diagnostic.hide()
+        vim.diagnostic.open_float(nil, opts)
+      end
+    end,
+  })
 end
 
 -- Enable the language servers
