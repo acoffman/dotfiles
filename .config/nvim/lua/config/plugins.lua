@@ -18,11 +18,7 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
     config = function()
-      require("lualine").setup({
-        options = {
-          theme = "tokyonight",
-        },
-      })
+      require("config.lualine")
     end,
   },
 

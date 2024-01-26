@@ -7,6 +7,13 @@ require("mason-lspconfig").setup({
   ensure_installed = { "solargraph", "tsserver", "angularls", "graphql" },
 })
 
+-- sign column icons consistent with trouble.nvim
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
 -- LSP settings
 local nvim_lsp = require("lspconfig")
 
