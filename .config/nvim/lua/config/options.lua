@@ -57,5 +57,8 @@ vim.opt.listchars:append({ trail = "•", tab = "»·" })
 -- Unified statusline
 vim.o.laststatus = 3
 
+-- Combine command and status line
+vim.o.cmdheight = 0
+
 -- Supress into message
 vim.opt.shortmess:append({ I = true })
