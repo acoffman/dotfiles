@@ -10,6 +10,7 @@ require("telescope").setup({
     generic_sorter = require("telescope.sorters").get_fzy_sorter,
     file_sorter = require("telescope.sorters").get_fzy_sorter,
     layout_strategy = "vertical",
+    prompt_prefix = "  ",
   },
 })
 
