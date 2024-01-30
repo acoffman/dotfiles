@@ -23,10 +23,22 @@ return {
   },
 
   {
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+      require("config.indent-blankline")
+    end,
+  },
+
+  {
     "stevearc/dressing.nvim",
     lazy = false,
   },
 
+  {
+    "HiPhish/rainbow-delimiters.nvim",
+  },
+
+  -- like netrw, but you can edit the filesystem
   {
     "stevearc/oil.nvim",
     lazy = false,
@@ -36,9 +48,6 @@ return {
           show_hidden = true,
         },
       })
-      -- Disable netrw in favor of oil.nvim
-      vim.g.loaded_netrw = 1
-      vim.g.loaded_netrwPlugin = 1
       -- replace :Explore with Oil
       vim.api.nvim_create_user_command("Explore", function(opts)
         vim.cmd("Oil " .. opts.args)
