@@ -1,3 +1,5 @@
+local icons = require("config.shared").icons
+
 require("lualine").setup({
   options = {
     theme = "tokyonight",
@@ -11,11 +13,11 @@ require("lualine").setup({
       {
         "diagnostics",
         symbols = {
-          error = " ",
-          warn = " ",
-          hint = " ",
-          info = " ",
-          other = " ",
+          error = icons.diagnostics.error,
+          warn = icons.diagnostics.warn,
+          hint = icons.diagnostics.hint,
+          info = icons.diagnostics.info,
+          other = icons.diagnostics.other,
         },
       },
     },

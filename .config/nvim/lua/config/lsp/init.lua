@@ -7,15 +7,21 @@ require("mason-lspconfig").setup({
   ensure_installed = { "solargraph", "tsserver", "angularls", "graphql" },
 })
 
--- sign column icons consistent with trouble.nvim
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
+local icons = require("config.shared").icons
 
 -- LSP settings
 local nvim_lsp = require("lspconfig")
+
+vim.diagnostic.config({
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = icons.diagnostics.error,
+      [vim.diagnostic.severity.WARN] = icons.diagnostics.warn,
+      [vim.diagnostic.severity.HINT] = icons.diagnostics.hint,
+      [vim.diagnostic.severity.INFO] = icons.diagnostics.info,
+    },
+  },
+})
 
 local on_attach = function(_client, bufnr)
   -- dont show the inline hint in addition to the floating window
