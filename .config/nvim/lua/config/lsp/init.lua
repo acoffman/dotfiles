@@ -70,7 +70,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 nvim_lsp.angularls.setup({
   capabilities = capabilities,
   on_attach = on_attach,
-  filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx" },
+  filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx", "angular" },
   root_dir = nvim_lsp.util.root_pattern("angular.json"),
 })
 

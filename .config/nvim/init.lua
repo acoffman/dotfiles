@@ -19,26 +19,20 @@ require("lazy").setup("config.plugins", {
   performance = {
     rtp = {
       disabled_plugins = {
-        'gzip',
-        'matchit',
-        'matchparen',
-        'netrwPlugin',
-        'tarPlugin',
-        'tohtml',
-        'tutor',
-        'zipPlugin',
+        "gzip",
+        "matchit",
+        "matchparen",
+        "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
       },
     },
   },
 })
 
-
 require("config.options")
 require("config.keymaps")
 require("config.autocmds")
-
-
--- Disable netrw in favor of oil.nvim
--- vim.g.loaded_netrw = 1
--- vim.g.loaded_netrwPlugin = 1
-
+require("config.filetypes")
