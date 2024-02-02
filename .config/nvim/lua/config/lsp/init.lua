@@ -84,6 +84,11 @@ nvim_lsp.graphql.setup({
   on_attach = on_attach,
 })
 
+nvim_lsp.sourcekit.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+
 nvim_lsp.solargraph.setup({
   capabilities = capabilities,
   on_attach = on_attach,

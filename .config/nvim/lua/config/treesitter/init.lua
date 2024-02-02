@@ -25,6 +25,7 @@ require("nvim-treesitter.configs").setup({
     "markdown_inline",
     "vimdoc",
     "angular",
+    "swift",
   },
   highlight = {
     enable = true, -- false will disable the whole extension
