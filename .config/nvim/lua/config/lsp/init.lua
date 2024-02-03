@@ -30,7 +30,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", {}),
   callback = function(ev)
     -- dont show the inline hint in addition to the floating window
-    require("lsp_signature").on_attach({ hint_enable = false })
+    require("lsp_signature").on_attach({
+      hint_enable = false,
+      max_height = 35,
+      max_width = 100,
+    })
+
     local bufnr = ev.buf
     local opts = { silent = true }
 
