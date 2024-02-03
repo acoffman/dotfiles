@@ -24,6 +24,8 @@ cmp.setup({
     }),
   },
   formatting = {
+    fields = { "abbr", "kind", "menu" },
+    expandable_indicator = true,
     format = lspkind.cmp_format({
       maxwidth = 50,
       mode = "symbol_text",
@@ -33,11 +35,17 @@ cmp.setup({
       },
     }),
   },
+  snippet = {
+    expand = function(args)
+      require("luasnip").lsp_expand(args.body)
+    end,
+  },
   sources = {
     { name = "nvim_lsp_signature_help" },
     { name = "nvim_lsp" },
     { name = "path" },
-    { name = "buffer", keyword_length = 5 },
+    { name = "buffer", keyword_length = 4 },
+    { name = "luasnip" },
   },
 })
 

@@ -86,6 +86,10 @@ return {
       "hrsh7th/cmp-cmdline",
       "onsails/lspkind.nvim",
       "ray-x/lsp_signature.nvim",
+      {
+        "L3MON4D3/LuaSnip",
+        build = "make install_jsregexp",
+      },
     },
     config = function()
       require("config.cmp")
@@ -198,5 +202,10 @@ return {
       require("nvim-surround").setup()
     end,
     event = "VeryLazy",
+  },
+
+  -- neovim support in lua lsp
+  {
+    "folke/neodev.nvim",
   },
 }
