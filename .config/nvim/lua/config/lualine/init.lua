@@ -4,6 +4,8 @@ require("lualine").setup({
   options = {
     theme = "tokyonight",
     globalstatus = true,
+    component_separators = "|",
+    section_separators = { left = "", right = "" },
   },
   -- use same icons as trouble.nvim
   sections = {

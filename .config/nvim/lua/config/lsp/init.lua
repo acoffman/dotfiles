@@ -4,7 +4,7 @@
 require("mason").setup()
 require("mason-lspconfig").setup({
   automatic_installation = true,
-  ensure_installed = { "solargraph", "tsserver", "angularls", "graphql", "lua_ls" },
+  ensure_installed = { "solargraph", "tsserver", "angularls", "graphql", "lua_ls", "jdtls" },
 })
 
 -- neodev must be set up before LSP per the readme

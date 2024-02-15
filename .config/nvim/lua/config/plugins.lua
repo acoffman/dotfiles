@@ -16,6 +16,8 @@ return {
     lazy = false,
     dependencies = {
       "nvim-tree/nvim-web-devicons",
+      -- merge tmux and vim statusline
+      "vimpostor/vim-tpipeline",
     },
     config = function()
       require("config.lualine")
@@ -68,6 +70,10 @@ return {
     end,
     event = { "BufReadPost", "BufNewFile" },
     cmd = { "LspInfo", "LspInstall", "LspUninstall", "Mason" },
+  },
+
+  {
+    "mfussenegger/nvim-jdtls",
   },
 
   {
@@ -182,7 +188,7 @@ return {
   },
   {
     "habamax/vim-rst",
-    ft = "wdl",
+    ft = "rst",
   },
   {
     "tpope/vim-rails",
