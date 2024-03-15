@@ -19,7 +19,7 @@ require("telescope").load_extension("fzf")
 vim.api.nvim_set_keymap(
   "n",
   "<leader>p",
-  [[<cmd>lua require('telescope.builtin').git_files()<cr>]],
+  [[<cmd>lua require('telescope.builtin').git_files({show_untracked = true})<cr>]],
   { noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap(
@@ -32,5 +32,11 @@ vim.api.nvim_set_keymap(
   "n",
   "<leader>r",
   [[<cmd>lua require('telescope.builtin').lsp_references()<cr>]],
+  { noremap = true, silent = true }
+)
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>b",
+  [[<cmd>lua require('telescope.builtin').buffers()<cr>]],
   { noremap = true, silent = true }
 )
