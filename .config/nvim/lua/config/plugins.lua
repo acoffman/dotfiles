@@ -16,8 +16,6 @@ return {
     lazy = false,
     dependencies = {
       "nvim-tree/nvim-web-devicons",
-      -- merge tmux and vim statusline
-      "vimpostor/vim-tpipeline",
     },
     config = function()
       require("config.lualine")
