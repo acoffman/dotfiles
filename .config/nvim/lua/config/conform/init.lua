@@ -7,6 +7,7 @@ conform.setup({
     angular = { "prettier" },
     typescript = { "prettierd" },
     lua = { "stylua" },
+    typescriptreact = { "prettier" },
   },
   format_on_save = {
     timeout_ms = 500,
