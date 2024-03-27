@@ -32,7 +32,15 @@ cmp.setup({
       menu = {
         buffer = "[Buffer]",
         nvim_lsp = "[LSP]",
+        treesitter = "[TS]",
       },
+      symbol_map = { Treesitter = "󰹩" },
+      before = function(entry, vim_item)
+        if entry.source.name == "treesitter" then
+          vim_item.kind = "Treesitter"
+        end
+        return vim_item
+      end,
     }),
   },
   snippet = {
@@ -44,14 +52,20 @@ cmp.setup({
     { name = "nvim_lsp_signature_help" },
     { name = "nvim_lsp" },
     { name = "path" },
+    { name = "treesitter" },
     { name = "buffer", keyword_length = 4 },
     { name = "luasnip" },
+  },
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
   },
 })
 
 cmp.setup.cmdline({ "/", "?" }, {
   mapping = cmp.mapping.preset.cmdline(),
   sources = {
+    { name = "treesitter" },
     { name = "buffer" },
   },
 })
