@@ -139,6 +139,17 @@ return {
     end,
   },
 
+  -- clipboard manager
+  {
+    "AckslD/nvim-neoclip.lua",
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+    },
+    config = function()
+      require("config.neoclip")
+    end,
+  },
+
   -- trouble
   {
     "folke/trouble.nvim",

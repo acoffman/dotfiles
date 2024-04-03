@@ -6,7 +6,6 @@ vim.keymap.set("n", "<leader>xd", function()
 end)
 
 -- <c-t> opens telescope results in trouble
-local actions = require("telescope.actions")
 local trouble = require("trouble.providers.telescope")
 
 local telescope = require("telescope")
