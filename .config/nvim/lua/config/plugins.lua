@@ -43,15 +43,7 @@ return {
     "stevearc/oil.nvim",
     lazy = false,
     config = function()
-      require("oil").setup({
-        view_options = {
-          show_hidden = true,
-        },
-      })
-      -- replace :Explore with Oil
-      vim.api.nvim_create_user_command("Explore", function(opts)
-        vim.cmd("Oil " .. opts.args)
-      end, { nargs = "?" })
+      require("config.oil")
     end,
   },
 
@@ -108,6 +100,7 @@ return {
     dependencies = {
       "RRethy/nvim-treesitter-endwise",
       "nvim-treesitter/nvim-treesitter-textobjects",
+      "nvim-treesitter/nvim-treesitter-context",
     },
     build = ":TSUpdate",
     config = function()
@@ -183,9 +176,6 @@ return {
 
   -- breadcrumbs
   "Bekaboo/dropbar.nvim",
-
-  -- commenting
-  "scrooloose/nerdcommenter",
 
   -- syntax
   {
