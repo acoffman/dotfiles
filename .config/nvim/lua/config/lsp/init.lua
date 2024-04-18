@@ -4,7 +4,7 @@
 require("mason").setup()
 require("mason-lspconfig").setup({
   automatic_installation = true,
-  ensure_installed = { "solargraph", "tsserver", "angularls", "graphql", "lua_ls", "jdtls" },
+  ensure_installed = { "solargraph", "tsserver", "angularls", "graphql", "lua_ls", "jdtls", "pylsp" },
 })
 
 -- neodev must be set up before LSP per the readme
@@ -116,6 +116,21 @@ nvim_lsp.solargraph.setup({
     solargraph = {
       --rubocop
       diagnostics = false,
+    },
+  },
+})
+
+nvim_lsp.pylsp.setup({
+  capabilities = capabilities,
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = { enabled = false },
+        pyflakes = { enabled = false },
+        yapf = { enabled = false },
+        flake8 = { enabled = false },
+        mccabe = { enabled = false },
+      },
     },
   },
 })
