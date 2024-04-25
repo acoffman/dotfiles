@@ -17,6 +17,7 @@ return {
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     },
+    event = "VeryLazy",
     config = function()
       require("config.lualine")
     end,
@@ -209,5 +210,6 @@ return {
   -- neovim support in lua lsp
   {
     "folke/neodev.nvim",
+    ft = { "lua" },
   },
 }
