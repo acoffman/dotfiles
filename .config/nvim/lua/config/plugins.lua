@@ -83,10 +83,6 @@ return {
       "onsails/lspkind.nvim",
       "ray-x/lsp_signature.nvim",
       "ray-x/cmp-treesitter",
-      {
-        "L3MON4D3/LuaSnip",
-        build = "make install_jsregexp",
-      },
     },
     config = function()
       require("config.cmp")
