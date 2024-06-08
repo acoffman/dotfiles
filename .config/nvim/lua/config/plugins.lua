@@ -209,7 +209,17 @@ return {
 
   -- neovim support in lua lsp
   {
-    "folke/neodev.nvim",
-    ft = { "lua" },
+    "folke/lazydev.nvim",
+    ft = "lua",
+    opts = {},
+  },
+
+  -- global find and replace panel
+  {
+    "magicduck/grug-far.nvim",
+    config = function()
+      require("config.grug-far")
+    end,
+    event = "VeryLazy",
   },
 }

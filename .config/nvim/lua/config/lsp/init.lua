@@ -16,24 +16,8 @@ require("mason-lspconfig").setup({
   },
 })
 
--- neodev must be set up before LSP per the readme
-require("neodev").setup({})
-
-local icons = require("config.shared").icons
-
 -- LSP settings
 local nvim_lsp = require("lspconfig")
-
-vim.diagnostic.config({
-  signs = {
-    text = {
-      [vim.diagnostic.severity.ERROR] = icons.diagnostics.error,
-      [vim.diagnostic.severity.WARN] = icons.diagnostics.warn,
-      [vim.diagnostic.severity.HINT] = icons.diagnostics.hint,
-      [vim.diagnostic.severity.INFO] = icons.diagnostics.info,
-    },
-  },
-})
 
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", {}),
@@ -118,9 +102,9 @@ nvim_lsp.lua_ls.setup({
 
 nvim_lsp.solargraph.setup({
   capabilities = capabilities,
-  cmd = { "solargraph", "stdio" },
+  cmd = { "bundle", "exec", "solargraph", "stdio" },
   filetypes = { "ruby" },
-  root_dir = nvim_lsp.util.root_pattern("Gemfile"),
+  --root_dir = nvim_lsp.util.root_pattern("Gemfile"),
   settings = {
     solargraph = {
       --rubocop

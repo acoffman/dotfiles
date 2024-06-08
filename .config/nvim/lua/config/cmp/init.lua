@@ -1,6 +1,7 @@
 -- cmp setup
 local cmp = require("cmp")
 local lspkind = require("lspkind")
+
 cmp.setup({
   mapping = {
     ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), { "i" }),
@@ -43,18 +44,13 @@ cmp.setup({
       end,
     }),
   },
-  snippet = {
-    expand = function(args)
-      vim.snippet.expand(args.body)
-    end,
-  },
   sources = {
     { name = "nvim_lsp_signature_help" },
     { name = "nvim_lsp" },
     { name = "path" },
     { name = "treesitter" },
     { name = "buffer", keyword_length = 4 },
-    { name = "luasnip" },
+    { name = "lazydev" },
   },
   window = {
     completion = cmp.config.window.bordered(),
