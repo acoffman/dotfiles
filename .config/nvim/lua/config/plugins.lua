@@ -4,8 +4,13 @@ return {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
-    opts = {},
     config = function()
+      require("tokyonight").setup({
+        style = "moon",
+        plugins = {
+          auto = true,
+        },
+      })
       vim.cmd("colorscheme tokyonight")
     end,
   },
@@ -97,7 +102,6 @@ return {
     dependencies = {
       "RRethy/nvim-treesitter-endwise",
       "nvim-treesitter/nvim-treesitter-textobjects",
-      "nvim-treesitter/nvim-treesitter-context",
     },
     build = ":TSUpdate",
     config = function()
@@ -201,9 +205,7 @@ return {
   -- surround
   {
     "kylechui/nvim-surround",
-    config = function()
-      require("nvim-surround").setup()
-    end,
+    config = true,
     event = "VeryLazy",
   },
 
@@ -211,7 +213,7 @@ return {
   {
     "folke/lazydev.nvim",
     ft = "lua",
-    opts = {},
+    config = true,
   },
 
   -- global find and replace panel
