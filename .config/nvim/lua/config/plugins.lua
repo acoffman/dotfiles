@@ -222,4 +222,8 @@ return {
     end,
     event = "VeryLazy",
   },
+  -- language specific % support
+  {
+    "andymass/vim-matchup",
+  },
 }
