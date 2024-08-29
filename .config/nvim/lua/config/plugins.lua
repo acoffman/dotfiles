@@ -226,4 +226,11 @@ return {
   {
     "andymass/vim-matchup",
   },
+  -- proportional scrolloff
+  {
+    "tonymajestro/smart-scrolloff.nvim",
+    opts = {
+      scrolloff_percentage = 0.2,
+    },
+  },
 }

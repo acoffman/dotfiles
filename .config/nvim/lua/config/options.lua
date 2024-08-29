@@ -13,9 +13,6 @@ vim.o.smartcase = true
 vim.wo.number = true
 vim.wo.relativenumber = true
 
--- Keep 3 lines of context as you scroll
-vim.o.scrolloff = 3
-
 --Do not save when switching buffers
 vim.o.hidden = true
 
