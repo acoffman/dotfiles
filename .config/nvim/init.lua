@@ -14,6 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 
 --Remap leader to , needs to happen before lazy init
 vim.g.mapleader = ","
+vim.g.maplocalleader = ","
 
 require("lazy").setup("config.plugins", {
   performance = {
