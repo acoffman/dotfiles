@@ -205,12 +205,6 @@ return {
     ft = { "ruby", "eruby" },
   },
 
-  -- highlight matching tokens
-  {
-    "RRethy/vim-illuminate",
-    event = "BufNew",
-  },
-
   -- surround
   {
     "kylechui/nvim-surround",
