@@ -6,7 +6,7 @@ require("mason-lspconfig").setup({
   automatic_installation = true,
   ensure_installed = {
     "solargraph",
-    "tsserver",
+    "ts_ls",
     "angularls",
     "graphql",
     "lua_ls",
@@ -54,7 +54,7 @@ nvim_lsp.angularls.setup({
   root_dir = nvim_lsp.util.root_pattern("angular.json"),
 })
 
-nvim_lsp.tsserver.setup({
+nvim_lsp.ts_ls.setup({
   capabilities = capabilities,
 })
 
