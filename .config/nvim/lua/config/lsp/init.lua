@@ -42,29 +42,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
-
-    --  on hover, show diagnostics in floating window, disable inline diagnostics
-    vim.api.nvim_create_autocmd("CursorHold", {
-      buffer = bufnr,
-      callback = function()
-        local hold_opts = {
-          focusable = false,
-          close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-          border = "rounded",
-          source = "if_many",
-          prefix = "",
-          scope = "line",
-          header = "",
-        }
-        local row, _ = unpack(vim.api.nvim_win_get_cursor(0))
-        if next(vim.diagnostic.get(bufnr, { lnum = row - 1 })) == nil then
-          vim.diagnostic.show()
-        else
-          vim.diagnostic.hide()
-          vim.diagnostic.open_float(nil, hold_opts)
-        end
-      end,
-    })
   end,
 })
 
