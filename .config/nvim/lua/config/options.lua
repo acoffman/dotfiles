@@ -60,6 +60,8 @@ vim.o.cmdheight = 0
 -- Supress into message
 vim.opt.shortmess:append({ I = true })
 
+vim.o.splitright = true
+
 -- set up diagnostic icons
 local icons = require("config.shared").icons
 

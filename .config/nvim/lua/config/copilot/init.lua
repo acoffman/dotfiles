@@ -15,6 +15,7 @@ chat.setup({
       insert = "<C-x>",
     },
   },
+  context = "buffers",
 })
 
 local function copilot_ask(selection_type)
@@ -31,4 +32,9 @@ end)
 
 vim.keymap.set("v", "<leader>cc", function()
   copilot_ask(select.visual)
+end)
+
+vim.keymap.set("n", "<leader>cp", function()
+  local actions = require("CopilotChat.actions")
+  require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
 end)
