@@ -73,6 +73,15 @@ return {
   },
 
   {
+    "rachartier/tiny-inline-diagnostic.nvim",
+    event = "LspAttach",
+    priority = 1000,
+    config = function()
+      require("config.diagnostic")
+    end
+  },
+
+  {
     "j-hui/fidget.nvim",
     config = true,
     event = { "BufReadPost", "BufNewFile" },
