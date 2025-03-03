@@ -80,7 +80,7 @@ return {
     priority = 1000,
     config = function()
       require("config.diagnostic")
-    end
+    end,
   },
 
   {
