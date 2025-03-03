@@ -7,5 +7,10 @@ return {
       info = " ",
       other = " ",
     },
+    ui = {
+      user = "",
+      bot = "",
+      treesitter = "󰹩",
+    },
   },
 }
