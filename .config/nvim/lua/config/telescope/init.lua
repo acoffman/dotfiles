@@ -12,31 +12,41 @@ require("telescope").setup({
     layout_strategy = "vertical",
     prompt_prefix = "  ",
   },
+  extensions = {
+    fzf = {},
+  },
 })
 
 require("telescope").load_extension("fzf")
 
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>p",
-  [[<cmd>lua require('telescope.builtin').git_files({show_untracked = true})<cr>]],
-  { noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>a",
-  [[<cmd>lua require('telescope.builtin').live_grep()<cr>]],
-  { noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>r",
-  [[<cmd>lua require('telescope.builtin').lsp_references()<cr>]],
-  { noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>b",
-  [[<cmd>lua require('telescope.builtin').buffers()<cr>]],
-  { noremap = true, silent = true }
-)
+vim.keymap.set("n", "<leader>p", function()
+  require("telescope.builtin").git_files({ show_untracked = true })
+end, { noremap = true, silent = true })
+
+vim.keymap.set("n", "<leader>a", function()
+  require("telescope.builtin").live_grep()
+end, { noremap = true, silent = true })
+
+vim.keymap.set("n", "<leader>r", function()
+  require("telescope.builtin").lsp_references()
+end, { noremap = true, silent = true })
+
+vim.keymap.set("n", "<leader>b", function()
+  require("telescope.builtin").buffers()
+end, { noremap = true, silent = true })
+
+vim.keymap.set("n", "<leader>o", function()
+  require("telescope.builtin").git_files({
+    show_untracked = true,
+    attach_mappings = function(_, map)
+      map("i", "<CR>", function(prompt_bufnr)
+        local actions = require("telescope.actions")
+        local action_state = require("telescope.actions.state")
+        local selection = action_state.get_selected_entry()
+        actions.close(prompt_bufnr)
+        vim.cmd("badd " .. selection.value)
+      end)
+      return true
+    end,
+  })
+end, { noremap = true, silent = true })
