@@ -23,5 +23,6 @@ require("lualine").setup({
         },
       },
     },
+    lualine_x = { "copilot", "encoding", "fileformat", "filetype" },
   },
 })
