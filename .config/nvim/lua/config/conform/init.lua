@@ -9,9 +9,11 @@ conform.setup({
     lua = { "stylua" },
     typescriptreact = { "prettier" },
     python = { "ruff_fix", "ruff_format" },
+    swift = { "swift_format" },
+    ruby = { "rubocop" },
   },
   format_on_save = {
-    timeout_ms = 500,
+    timeout_ms = 1000,
     lsp_format = "never",
   },
   formatters = {
