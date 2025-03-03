@@ -60,6 +60,7 @@ return {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "kosayoda/nvim-lightbulb",
+      "saghen/blink.cmp",
     },
     config = function()
       require("config.lsp")
@@ -89,18 +90,15 @@ return {
 
   -- completion
   {
-    "hrsh7th/nvim-cmp",
+    "saghen/blink.cmp",
+    version = "*",
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-cmdline",
-      "onsails/lspkind.nvim",
-      "ray-x/lsp_signature.nvim",
-      "ray-x/cmp-treesitter",
+      "fang2hou/blink-copilot",
+      "rafamadriz/friendly-snippets",
+      "mikavilpas/blink-ripgrep.nvim",
     },
     config = function()
-      require("config.cmp")
+      require("config.blink")
     end,
     event = "InsertEnter",
   },

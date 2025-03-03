@@ -1,6 +1,26 @@
--- cmp setup
+-- cmp setup (no longer utilized. left for reference)
+-- previous lazy config:
+--
+-- {
+--   "hrsh7th/nvim-cmp",
+--   dependencies = {
+--     "hrsh7th/cmp-nvim-lsp",
+--     "hrsh7th/cmp-buffer",
+--     "hrsh7th/cmp-path",
+--     "hrsh7th/cmp-cmdline",
+--     "onsails/lspkind.nvim",
+--     "ray-x/lsp_signature.nvim",
+--     "ray-x/cmp-treesitter",
+--   },
+--   config = function()
+--     require("config.cmp")
+--   end,
+--   event = "InsertEnter",
+-- },
+
 local cmp = require("cmp")
 local lspkind = require("lspkind")
+local icons = require("config.shared").icons
 
 cmp.setup({
   mapping = {
@@ -35,7 +55,7 @@ cmp.setup({
         nvim_lsp = "[LSP]",
         treesitter = "[TS]",
       },
-      symbol_map = { Treesitter = "󰹩" },
+      symbol_map = { Treesitter = icons.ui.treesitter },
       before = function(entry, vim_item)
         if entry.source.name == "treesitter" then
           vim_item.kind = "Treesitter"

@@ -22,13 +22,6 @@ local nvim_lsp = require("lspconfig")
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", {}),
   callback = function(ev)
-    -- dont show the inline hint in addition to the floating window
-    require("lsp_signature").on_attach({
-      hint_enable = false,
-      max_height = 35,
-      max_width = 100,
-    })
-
     local bufnr = ev.buf
     local opts = { silent = true }
 
@@ -46,7 +39,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 -- Enable the language servers
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 nvim_lsp.angularls.setup({
   capabilities = capabilities,
