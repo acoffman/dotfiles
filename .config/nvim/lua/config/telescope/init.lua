@@ -14,10 +14,14 @@ require("telescope").setup({
   },
   extensions = {
     fzf = {},
+    ["ui-select"] = {
+      require("telescope.themes").get_dropdown({}),
+    },
   },
 })
 
 require("telescope").load_extension("fzf")
+require("telescope").load_extension("ui-select")
 
 vim.keymap.set("n", "<leader>p", function()
   require("telescope.builtin").git_files({ show_untracked = true })

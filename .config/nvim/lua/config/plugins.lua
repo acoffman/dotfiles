@@ -35,10 +35,13 @@ return {
       require("config.indent-blankline")
     end,
   },
-
   {
-    "stevearc/dressing.nvim",
+    "folke/snacks.nvim",
+    priority = 1000,
     lazy = false,
+    config = function()
+      require("config.snacks")
+    end,
   },
 
   {
@@ -131,6 +134,7 @@ return {
     "nvim-telescope/telescope.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope-ui-select.nvim",
       {
         "nvim-telescope/telescope-fzf-native.nvim",
         build = "make",
