@@ -12,7 +12,7 @@ conform.setup({
     swift = { "swift_format" },
     ruby = { "rubocop" },
   },
-  format_on_save = {
+  format_after_save = {
     timeout_ms = 1000,
     lsp_format = "never",
   },
