@@ -29,9 +29,6 @@ blink.setup({
   fuzzy = { implementation = "rust" },
   signature = {
     enabled = true,
-    window = {
-      border = "rounded",
-    },
   },
   appearance = {
     -- signature background doesn't work correctly in tokyonight
@@ -43,16 +40,12 @@ blink.setup({
     },
     menu = {
       scrollbar = false,
-      border = "rounded",
       draw = {
         columns = { { "label", gap = 1 }, { "kind_icon", gap = 1, "kind" } },
       },
     },
     documentation = {
       auto_show = true,
-      window = {
-        border = "rounded",
-      },
     },
   },
 })
