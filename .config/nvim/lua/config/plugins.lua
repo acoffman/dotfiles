@@ -97,7 +97,6 @@ return {
     "saghen/blink.cmp",
     version = "*",
     dependencies = {
-      "fang2hou/blink-copilot",
       "rafamadriz/friendly-snippets",
       "mikavilpas/blink-ripgrep.nvim",
     },

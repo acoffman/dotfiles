@@ -12,17 +12,12 @@ blink.setup({
     ["<Down>"] = { "scroll_documentation_down", "fallback" },
   },
   sources = {
-    default = { "lsp", "path", "ripgrep", "snippets", "lazydev", "copilot" },
+    default = { "lsp", "path", "ripgrep", "snippets", "lazydev" },
     providers = {
       lazydev = {
         name = "LazyDev",
         module = "lazydev.integrations.blink",
         score_offset = 100,
-      },
-      copilot = {
-        name = "Copilot",
-        module = "blink-copilot",
-        async = true,
       },
       ripgrep = {
         module = "blink-ripgrep",
