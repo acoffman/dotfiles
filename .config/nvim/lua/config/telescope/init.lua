@@ -9,7 +9,7 @@ require("telescope").setup({
     },
     generic_sorter = require("telescope.sorters").get_fzy_sorter,
     file_sorter = require("telescope.sorters").get_fzy_sorter,
-    layout_strategy = "vertical",
+    layout_strategy = "horizontal",
     prompt_prefix = "  ",
   },
   extensions = {
@@ -54,3 +54,16 @@ vim.keymap.set("n", "<leader>o", function()
     end,
   })
 end, { noremap = true, silent = true })
+
+vim.api.nvim_create_autocmd("User", {
+  pattern = "TelescopeFindPre",
+  callback = function()
+    vim.opt_local.winborder = "none"
+    vim.api.nvim_create_autocmd("WinLeave", {
+      once = true,
+      callback = function()
+        vim.opt_local.winborder = "rounded"
+      end,
+    })
+  end,
+})
